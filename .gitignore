@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+presentation/*.png
+presentation/*.pdf
+results_*/summary_map.png
+results_export_*/
+ap_ira_staged/
+.spyproject/
+.vscode/
+.idea/
