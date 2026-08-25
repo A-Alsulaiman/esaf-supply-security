@@ -1,0 +1,17 @@
+{
+  "spatial_and_resource_sources": {
+    "airport_coordinates": {
+      "source": "OurAirports open data downloads; OpenFlights airport database used as secondary check where needed.",
+      "source_url": "https://ourairports.com/data/",
+      "secondary_url": "https://openflights.org/data.php"
+    },
+    "country_boundaries": {
+      "source": "Natural Earth Admin 0 country boundaries, public domain cultural vectors.",
+      "source_url": "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/"
+    },
+    "solar_and_meteorological_data": {
+      "source": "NASA POWER Data Access Viewer / NASA POWER climatology API for solar and meteorological variables.",
+      "source_url": "https://power.larc.nasa.gov/data-access-viewer/"
+    }
+  }
+}

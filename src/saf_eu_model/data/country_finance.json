@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "purpose": "Per-country financing cost (real pre-tax WACC) and seasonal H2 storage geology used by the v7 model (wacc_mode=country, geology-based storage pricing).",
+    "wacc_convention": "Values are REAL PRE-TAX WACC screening estimates for utility-scale renewables. Construction: the most recent surveyed NOMINAL POST-TAX WACC per country (AURES II survey 2019/20, Zenodo 5572754; IRENA cost-of-financing 2023 where more recent; DiaCore 2016 only where nothing newer exists - flagged) is used directly as a real pre-tax proxy, on the documented approximation that the ~2 pp rise in the risk-free rate since the survey period offsets the ~2 pp nominal-to-real inflation adjustment, and the post-tax to pre-tax uplift is within the sampling band. A floor of 4.0% (no European infrastructure project currently finances below ~4% real pre-tax) and a cap of 10.0% are applied. UK uses DESNZ 2025 values published directly as real pre-tax; CH uses the SFOE regulated imputed WACC. The wacc_country_delta parameter (+/-1.5 pp) in literature_inputs.json samples around these values. This is a screening table: replace with a single-vintage dataset (e.g. Hatton et al. 2025, Sci Data, Zenodo 17076925) before publication if a uniform source is preferred.",
+    "wacc_sources": "AURES II: https://zenodo.org/records/5572754 and https://www.isi.fraunhofer.de/content/dam/isi/dokumente/ccx/2021/AURES_II_D5_2_financing_conditions.pdf ; IRENA cost of financing 2023: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2023/May/IRENA_The_cost_of_financing_renewable_power_2023.pdf ; DiaCore: https://www.isi.fraunhofer.de/content/dam/isi/dokumente/ccx/dia-core/D3-4_diacore_2016_impact_of_risk_in_res_investments.pdf ; UK DESNZ: https://assets.publishing.service.gov.uk/media/68ba91f411b4ded2da19fe92/onshore-wind-and-solar-pv-cost-electricity-report-update-2024.pdf ; CH SFOE: https://www.bfe.admin.ch/bfe/en/home/promotion/renewable-energy/wacc-imputed-interest-rate.html ; MENA: https://one.oecd.org/document/ENV/WKP(2024)15/REV1/en/pdf and IRENA RPGC 2024.",
+    "h2_geology_convention": "salt = onshore salt-cavern potential exists (seasonal H2 store priced at h2_storage_capex_cavern_chf_per_kwh); rock = no salt deposits, lined rock cavern assumed (h2_storage_capex_rock_chf_per_kwh). Assignment follows Caglayan et al. 2020 (IJHE 45:6793-6805, onshore technical potential): salt-cavern countries Germany, Netherlands, UK, Poland, Denmark, France, Spain, Portugal, Romania, Greece. Elberry et al. 2021 confirm no salt potential in Finland/Sweden. Site-to-cavern distance is NOT modelled (screening limitation - the store is assumed co-located).",
+    "h2_geology_source": "https://www.sciencedirect.com/science/article/pii/S0360319919347299"
+  },
+  "countries": {
+    "AUT": {"wacc_real": 0.053, "wacc_note": "AURES II 2019/20 onshore wind 5.3%", "h2_geology": "rock"},
+    "BEL": {"wacc_real": 0.040, "wacc_note": "AURES II wind 3.7%, floored at 4.0%", "h2_geology": "rock"},
+    "BGR": {"wacc_real": 0.090, "wacc_note": "DiaCore 2014 wind ~10.5% (dated), moderated to 9.0%", "h2_geology": "rock"},
+    "HRV": {"wacc_real": 0.078, "wacc_note": "AURES II wind 7.8%", "h2_geology": "rock"},
+    "CYP": {"wacc_real": 0.060, "wacc_note": "no survey value; Greece proxy 6.0%", "h2_geology": "rock"},
+    "CZE": {"wacc_real": 0.055, "wacc_note": "AURES II PV 5.5%", "h2_geology": "rock"},
+    "DNK": {"wacc_real": 0.040, "wacc_note": "AURES II wind 2.5% / IRENA 2021 3.2%, floored at 4.0%", "h2_geology": "salt"},
+    "EST": {"wacc_real": 0.072, "wacc_note": "AURES II PV 7.2%", "h2_geology": "rock"},
+    "FIN": {"wacc_real": 0.042, "wacc_note": "AURES II wind 4.2%", "h2_geology": "rock"},
+    "FRA": {"wacc_real": 0.040, "wacc_note": "AURES II PV 3.3% / IRENA 2021 2.2%, floored at 4.0%", "h2_geology": "salt"},
+    "DEU": {"wacc_real": 0.040, "wacc_note": "AURES II wind 1.9% / IRENA 2021 PV 1.4%, floored at 4.0%", "h2_geology": "salt"},
+    "GRC": {"wacc_real": 0.060, "wacc_note": "AURES II PV 6.0% (IRENA 2021: PV 3.0%, wind 6.8%)", "h2_geology": "salt"},
+    "HUN": {"wacc_real": 0.056, "wacc_note": "AURES II PV 5.6%", "h2_geology": "rock"},
+    "IRL": {"wacc_real": 0.065, "wacc_note": "AURES II D5.2 wind range 5-8%, midpoint", "h2_geology": "rock"},
+    "ITA": {"wacc_real": 0.049, "wacc_note": "AURES II wind 4.9% (IRENA 2021 PV 3.3%)", "h2_geology": "rock"},
+    "LVA": {"wacc_real": 0.090, "wacc_note": "AURES II wind 9.1% (PV 12.1%, n=1), moderated to 9.0%", "h2_geology": "rock"},
+    "LTU": {"wacc_real": 0.088, "wacc_note": "AURES II wind 8.8%", "h2_geology": "rock"},
+    "LUX": {"wacc_real": 0.045, "wacc_note": "DiaCore 2014 ~4.5% (dated)", "h2_geology": "rock"},
+    "MLT": {"wacc_real": 0.049, "wacc_note": "no survey value; Italy proxy 4.9%", "h2_geology": "rock"},
+    "NLD": {"wacc_real": 0.050, "wacc_note": "AURES II wind 5.0% (IRENA 2021 PV 2.2%)", "h2_geology": "salt"},
+    "POL": {"wacc_real": 0.046, "wacc_note": "AURES II wind 4.6% (IRENA 2021 PV 3.0%)", "h2_geology": "salt"},
+    "PRT": {"wacc_real": 0.052, "wacc_note": "AURES II PV 5.2%", "h2_geology": "salt"},
+    "ROU": {"wacc_real": 0.076, "wacc_note": "AURES II PV 7.6%", "h2_geology": "salt"},
+    "SVK": {"wacc_real": 0.055, "wacc_note": "AURES II PV 5.5%", "h2_geology": "rock"},
+    "SVN": {"wacc_real": 0.078, "wacc_note": "no recent survey; Croatia proxy 7.8% (DiaCore 2014 ~12%, dated)", "h2_geology": "rock"},
+    "ESP": {"wacc_real": 0.052, "wacc_note": "AURES II PV 5.2% (IRENA 2021 PV 3.3%)", "h2_geology": "salt"},
+    "SWE": {"wacc_real": 0.057, "wacc_note": "AURES II wind 5.7%", "h2_geology": "rock"},
+    "GBR": {"wacc_real": 0.054, "wacc_note": "DESNZ 2025 real pre-tax: solar 5.0%, onshore wind 5.8% (midpoint)", "h2_geology": "salt"},
+    "CHE": {"wacc_real": 0.041, "wacc_note": "SFOE regulated imputed WACC 2026: PV 3.75%, wind 4.45% (midpoint)", "h2_geology": "rock"},
+    "SAU": {"wacc_real": 0.087, "wacc_note": "IRENA MEA utility solar cost of capital 8.7% (2021, nominal post-tax; used as screening value)", "h2_geology": "rock"},
+    "ARE": {"wacc_real": 0.080, "wacc_note": "GCC auctions financed below MEA average; screening 8.0%", "h2_geology": "rock"},
+    "MAR": {"wacc_real": 0.100, "wacc_note": "OECD 2023 financing costs (debt 12.8%) capped at 10.0%", "h2_geology": "rock"}
+  }
+}

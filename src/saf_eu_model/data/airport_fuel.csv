@@ -1,0 +1,33 @@
+country_iso3,airport_iata,fuel_kt_2024,fuel_basis,fuel_uncertainty
+AUT,VIE,850,"Eurostat AT kerosene deliveries 946 kt x 90.0% VIE pax share; ICCT/AirportTracker 806 kt",0.10
+BEL,BRU,975,"AirportTracker (ICCT 2023 departing-flight CO2 /3.84) 948 kt; BE country allocation 1230 kt is upper bound (Liege cargo)",0.15
+BGR,SOF,160,"Eurostat BG 232 kt x 71.9%; tracker 152",0.10
+HRV,ZAG,83,"Eurostat HR 243 kt x 34.0%; tracker 83",0.10
+CYP,LCA,215,"Eurostat CY 304 kt x 70.4%; tracker 216",0.10
+CZE,PRG,400,"Eurostat CZ 440 kt x 91.8%; tracker 374",0.10
+DNK,CPH,800,"Eurostat DK 959 kt x 85.6%; tracker 767",0.10
+EST,TLL,56,"Eurostat EE country total (single hub); tracker 72",0.10
+FIN,HEL,630,"Eurostat FI 688 kt x 92.1%; tracker 627",0.10
+FRA,CDG,4000,"AirportTracker 4028 kt (long-haul hub; pax-share allocation 2920 kt is a floor)",0.18
+DEU,FRA,3550,"AirportTracker 3570 kt (pax-share floor 2780 kt)",0.18
+GRC,ATH,720,"Eurostat EL 1628 kt x 45.6%; tracker 705",0.12
+HUN,BUD,370,"Eurostat HU 366 kt x 98.5%; tracker 399",0.10
+IRL,DUB,875,"Eurostat IE 1064 kt x 84.7%; tracker 850",0.10
+ITA,FCO,1400,"AirportTracker 1405 kt; allocation 1310 kt",0.15
+LVA,RIX,126,"Eurostat LV country total (single hub); tracker 137",0.10
+LTU,VNO,80,"Eurostat LT 106 kt x 72.9%; tracker 94",0.12
+LUX,LUX,610,"Eurostat LU country total (single hub incl. Cargolux); tracker 616",0.10
+MLT,MLA,161,"Eurostat MT country total (single hub); tracker 165",0.10
+NLD,AMS,2950,"Eurostat NL 3362 kt x 87.6% = 2946; tracker 2988",0.10
+POL,WAW,530,"Eurostat PL 1340 kt x 37.3% = 500; tracker 558",0.12
+PRT,LIS,1050,"Eurostat PT 1800 kt x 54.8% = 986; tracker 1103",0.12
+ROU,OTP,280,"AirportTracker 282 kt (Eurostat RO deliveries anomalous at 118 kt)",0.15
+SVK,BTS,28,"Eurostat SK 33 kt x 72.5%; tracker 43 capped by country total",0.15
+SVN,LJU,20,"Eurostat SI country total (single hub); tracker 31",0.15
+ESP,MAD,2500,"AirportTracker 2585 kt (long-haul hub; pax-share floor 1880 kt)",0.18
+SWE,ARN,495,"Eurostat SE 642 kt x 76.3% = 490; tracker 501",0.10
+GBR,LHR,6200,"Heathrow-implied (155 kt SAF = 2.5% of 2024 fuel; 70 kt = ~1% of 2023); tracker 5915; DUKES UK total 12.25 Mt",0.12
+CHE,ZRH,1000,"CH BFE 1590 kt x 55.0% ZRH pax share = 875 (floor); tracker 1304 (ceiling)",0.20
+SAU,RUH,1100,"AirportTracker 995 kt (2023) scaled +16% pax growth (37.0M pax 2024)",0.20
+ARE,DXB,6300,"AirportTracker 6036 kt (2023) scaled +6% (92.3M pax 2024)",0.20
+MAR,CMN,430,"AirportTracker 383 kt (2023) scaled ~+15% (10.45M pax 2024)",0.20

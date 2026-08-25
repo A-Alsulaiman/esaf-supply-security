@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "purpose": "Mandate-driven e-SAF demand per hub airport: demand_year = airport fuel uplift 2024 x fuel growth factor(year) x synthetic-fuel share(jurisdiction, year). Used when sizing='mandate'.",
+    "shares_source": "EU: Regulation (EU) 2023/2405 (ReFuelEU Aviation) Annex I - synthetic aviation fuel minimum shares: 1.2% average 2030-2031 (0.7%/y floor), 2.0% avg 2032-2034, 5% 2035, 10% 2040, 15% 2045, 35% 2050. UK: SAF Mandate SI 2024/1187 art. 3(7) - PtL sub-obligation ~0.5% of total jet fuel in 2030, ~1.5% 2035, ~3.5% from 2040 (flat thereafter). CH: applies ReFuelEU shares at Zurich/Geneva via the Air Transport Agreement from 1 Jan 2026 (CO2 Act Art. 28f; Joint Committee decision 25 July 2025).",
+    "shares_urls": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R2405 ; https://www.legislation.gov.uk/uksi/2024/1187/article/3/made ; https://www.bazl.admin.ch/en/saf-quota",
+    "growth_source": "EASA European Aviation Environmental Report 2025 base scenario: EU27+EFTA full-flight fuel CO2 ~140 Mt in 2024 -> ~140 Mt (2030) -> ~138 Mt (2050): traffic growth (+11.5% flights to 2030, ~+40% to 2050, EUROCONTROL) largely offset by fleet/ATM efficiency (~1.5-2%/y). Base factors: 2030 = 1.02 (range 0.99-1.10), 2050 = 1.00 (range 0.80-1.15) vs 2024.",
+    "growth_urls": "https://www.easa.europa.eu/sites/default/files/eaer-downloads/EASA_EAER_2025_Book_v5.pdf ; https://www.eurocontrol.int/sites/default/files/2025-10/eurocontrol-seven-year-forecast-2025-2031-october-2025.pdf",
+    "reference_case_note": "SAU/ARE/MAR carry no EU mandate; sizing='mandate' keeps them at the fixed reference size (export case to be analysed separately)."
+  },
+  "fuel_growth_factor_vs_2024": {"2030": 1.02, "2050": 1.00},
+  "synthetic_share": {
+    "EU":  {"2030": 0.012, "2035": 0.05, "2040": 0.10, "2045": 0.15, "2050": 0.35},
+    "GBR": {"2030": 0.005, "2035": 0.015, "2040": 0.035, "2045": 0.035, "2050": 0.035},
+    "CHE": {"2030": 0.012, "2035": 0.05, "2040": 0.10, "2045": 0.15, "2050": 0.35}
+  }
+}

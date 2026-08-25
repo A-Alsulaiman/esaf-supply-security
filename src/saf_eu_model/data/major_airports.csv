@@ -1,0 +1,33 @@
+country_iso3,country_name,airport_name,airport_iata,airport_lat,airport_lon,case_group,airport_source_url
+AUT,Austria,Vienna International Airport,VIE,48.1103,16.5697,core_eu27_uk_ch,https://ourairports.com/data/
+BEL,Belgium,Brussels Airport,BRU,50.9014,4.4844,core_eu27_uk_ch,https://ourairports.com/data/
+BGR,Bulgaria,Sofia Airport,SOF,42.695,23.4062,core_eu27_uk_ch,https://ourairports.com/data/
+HRV,Croatia,Zagreb Franjo Tudman Airport,ZAG,45.7429,16.0688,core_eu27_uk_ch,https://ourairports.com/data/
+CYP,Cyprus,Larnaca International Airport,LCA,34.8751,33.6249,core_eu27_uk_ch,https://ourairports.com/data/
+CZE,Czechia,Vaclav Havel Airport Prague,PRG,50.1008,14.2632,core_eu27_uk_ch,https://ourairports.com/data/
+DNK,Denmark,Copenhagen Airport,CPH,55.6181,12.6561,core_eu27_uk_ch,https://ourairports.com/data/
+EST,Estonia,Tallinn Airport,TLL,59.4133,24.8328,core_eu27_uk_ch,https://ourairports.com/data/
+FIN,Finland,Helsinki Airport,HEL,60.3172,24.9633,core_eu27_uk_ch,https://ourairports.com/data/
+FRA,France,Paris Charles de Gaulle Airport,CDG,49.0097,2.5479,core_eu27_uk_ch,https://ourairports.com/data/
+DEU,Germany,Frankfurt Airport,FRA,50.0379,8.5622,core_eu27_uk_ch,https://ourairports.com/data/
+GRC,Greece,Athens International Airport,ATH,37.9364,23.9475,core_eu27_uk_ch,https://ourairports.com/data/
+HUN,Hungary,Budapest Ferenc Liszt International Airport,BUD,47.4369,19.2556,core_eu27_uk_ch,https://ourairports.com/data/
+IRL,Ireland,Dublin Airport,DUB,53.4213,-6.2701,core_eu27_uk_ch,https://ourairports.com/data/
+ITA,Italy,Rome Fiumicino Airport,FCO,41.8003,12.2389,core_eu27_uk_ch,https://ourairports.com/data/
+LVA,Latvia,Riga Airport,RIX,56.9236,23.9711,core_eu27_uk_ch,https://ourairports.com/data/
+LTU,Lithuania,Vilnius Airport,VNO,54.6341,25.2858,core_eu27_uk_ch,https://ourairports.com/data/
+LUX,Luxembourg,Luxembourg Airport,LUX,49.6266,6.2115,core_eu27_uk_ch,https://ourairports.com/data/
+MLT,Malta,Malta International Airport,MLA,35.8575,14.4775,core_eu27_uk_ch,https://ourairports.com/data/
+NLD,Netherlands,Amsterdam Schiphol Airport,AMS,52.3105,4.7683,core_eu27_uk_ch,https://ourairports.com/data/
+POL,Poland,Warsaw Chopin Airport,WAW,52.1657,20.9671,core_eu27_uk_ch,https://ourairports.com/data/
+PRT,Portugal,Lisbon Airport,LIS,38.7742,-9.1342,core_eu27_uk_ch,https://ourairports.com/data/
+ROU,Romania,Henri Coanda Bucharest Airport,OTP,44.5711,26.085,core_eu27_uk_ch,https://ourairports.com/data/
+SVK,Slovakia,Bratislava Airport,BTS,48.1702,17.2127,core_eu27_uk_ch,https://ourairports.com/data/
+SVN,Slovenia,Ljubljana Airport,LJU,46.2237,14.4576,core_eu27_uk_ch,https://ourairports.com/data/
+ESP,Spain,Adolfo Suarez Madrid-Barajas Airport,MAD,40.4722,-3.5608,core_eu27_uk_ch,https://ourairports.com/data/
+SWE,Sweden,Stockholm Arlanda Airport,ARN,59.6519,17.9186,core_eu27_uk_ch,https://ourairports.com/data/
+GBR,United Kingdom,Heathrow Airport,LHR,51.47,-0.4543,core_eu27_uk_ch,https://ourairports.com/data/
+CHE,Switzerland,Zurich Airport,ZRH,47.4582,8.5555,core_eu27_uk_ch,https://ourairports.com/data/
+SAU,Saudi Arabia,King Khalid International Airport,RUH,24.9576,46.6988,renewable_rich_reference,https://ourairports.com/data/
+ARE,United Arab Emirates,Dubai International Airport,DXB,25.2532,55.3657,renewable_rich_reference,https://ourairports.com/data/
+MAR,Morocco,Mohammed V International Airport,CMN,33.3675,-7.58997,renewable_rich_reference,https://ourairports.com/data/

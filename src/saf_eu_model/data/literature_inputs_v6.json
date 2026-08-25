@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "currency_note": "The model uses CHF-equivalent internal units for continuity with the original calculation workflow. Reporting columns in EUR and USD are added using explicit conversion factors in run_full_eu27_uk_ch.py. The economic values below are screening assumptions derived from the cited public sources and are used as uncertainty ranges, not as site-specific quotations.",
+    "default_scenario": "base",
+    "no_ghost_number_note": "Each numerical input is accompanied by a public source URL and a short derivation/provenance note. Where no harmonised public value is available, the parameter is either excluded from the base model or explicitly treated as a scenario assumption.",
+    "no_hidden_credit_note": "No co-product or by-product credit is subtracted from delivered cost in the base model. The output explicitly reports coproduct_credit_chf_per_tonne_saf and annual_coproduct_credit_chf, both zero unless intentionally changed in a scenario.",
+    "v6_note": "v6 additions: (1) fixed_land_and_utilities_chf_per_year, previously a hidden 60 MCHF/y constant in economics.py, is now an explicit scenario parameter so it appears in provenance and uncertainty sampling; (2) h2_storage_capex_chf_per_kwh is now an explicit parameter used consistently for BOTH the seasonal store and the plant H2 buffer (the old 12 CHF/kg buffer value was internally inconsistent with the 2.4 CHF/kWh = 80 CHF/kg seasonal value); (3) an optional meta.fx_to_chf mapping plus per-parameter 'currency' tags allow USD/EUR source values to be converted explicitly instead of being relabelled as CHF 1:1 (see review finding P16). Without these tags behaviour is unchanged.",
+    "fx_to_chf_example": {
+      "comment": "To activate explicit FX conversion, rename this key to fx_to_chf, set rates for a stated date (e.g. ECB reference rates), and tag parameters with 'currency': 'USD'.",
+      "USD": 0.88,
+      "EUR": 0.94,
+      "rates_as_of": "SET-DATE-AND-SOURCE-BEFORE-USE"
+    }
+  },
+  "parameters": {
+    "pv_capex_chf_per_kw": {
+      "min": 380.0,
+      "base": 700.0,
+      "max": 1300.0,
+      "units": "CHF/kW",
+      "source": "IEA Levelised Cost of Hydrogen Maps. The 2030 technology CAPEX assumptions reported by IEA include USD 380-1300/kW for solar PV; these are used as a CHF-equivalent screening range.",
+      "source_url": "https://www.iea.org/data-and-statistics/data-tools/levelised-cost-of-hydrogen-maps"
+    },
+    "wind_capex_chf_per_kw": {
+      "min": 980.0,
+      "base": 1800.0,
+      "max": 3260.0,
+      "units": "CHF/kW",
+      "source": "IEA Levelised Cost of Hydrogen Maps. The 2030 technology CAPEX assumptions reported by IEA include USD 980-3260/kW for onshore wind; these are used as a CHF-equivalent screening range.",
+      "source_url": "https://www.iea.org/data-and-statistics/data-tools/levelised-cost-of-hydrogen-maps"
+    },
+    "battery_capex_chf_per_kwh": {
+      "min": 192.0,
+      "base": 220.0,
+      "max": 300.0,
+      "units": "CHF/kWh",
+      "source": "IRENA Renewable Power Generation Costs in 2024 reports utility-scale battery storage costs around USD 192/kWh; the base and upper bound add conservative screening margin.",
+      "source_url": "https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024"
+    },
+    "electrolyser_capex_chf_per_kw": {
+      "min": 620.0,
+      "base": 960.0,
+      "max": 2450.0,
+      "units": "CHF/kW",
+      "source": "IEA Levelised Cost of Hydrogen Maps and IEA Electrolysers tracking page. IEA LCOH Maps include USD 620-960/kW 2030 electrolyser CAPEX; the upper bound reflects current installed-cost uncertainty from IEA tracking material.",
+      "source_url": "https://www.iea.org/energy-system/low-emission-fuels/electrolysers"
+    },
+    "dac_capex_chf_per_tco2_year": {
+      "min": 100.0,
+      "base": 600.0,
+      "max": 1000.0,
+      "units": "CHF/(tCO2/year)",
+      "source": "NREL DAC review summarising the wide range of reported direct-air-capture cost and capital assumptions; used here as a proxy uncertainty band rather than a vendor quotation.",
+      "source_url": "https://docs.nrel.gov/docs/fy25osti/92412.pdf"
+    },
+    "ft_capex_chf_per_kw_liquid": {
+      "min": 1200.0,
+      "base": 1600.0,
+      "max": 2400.0,
+      "units": "CHF/kW_liquid",
+      "source": "Screening engineering range for Fischer-Tropsch/liquid synthesis checked against EASA ReFuelEU synthetic aviation fuel reference-price plausibility. It is retained as an uncertainty parameter rather than a plant quote.",
+      "source_url": "https://www.easa.europa.eu/en/document-library/general-publications/2025-aviation-fuels-reference-prices-refueleu-aviation"
+    },
+    "heat_pump_capex_chf_per_kw": {
+      "min": 450.0,
+      "base": 620.0,
+      "max": 900.0,
+      "units": "CHF/kW",
+      "source": "Scenario range for auxiliary heat integration; technology context from IEA Energy Efficiency 2024. This is a minor cost item relative to renewables and electrolysis.",
+      "source_url": "https://www.iea.org/reports/energy-efficiency-2024"
+    },
+    "compressor_capex_chf_per_kw": {
+      "min": 180.0,
+      "base": 260.0,
+      "max": 420.0,
+      "units": "CHF/kW",
+      "source": "Scenario range for compression equipment; technology context from IEA The Future of Hydrogen. This is a minor cost item relative to renewables and electrolysis.",
+      "source_url": "https://www.iea.org/reports/the-future-of-hydrogen"
+    },
+    "pipeline_capex_chf_per_km": {
+      "min": 1500000.0,
+      "base": 3000000.0,
+      "max": 5000000.0,
+      "units": "CHF/km",
+      "source": "Pipeline linehaul proxy derived from public pipeline-cost benchmarks. Global Energy Monitor summarises FERC/OGJ gas pipeline projects around USD 4.75 million/km in 2015-16; a lower-to-central screening range is used here for liquid-fuel logistics sensitivity.",
+      "source_url": "https://www.gem.wiki/Oil_and_Gas_Pipeline_Construction_Costs"
+    },
+    "road_variable_chf_per_tkm": {
+      "min": 0.035,
+      "base": 0.075,
+      "max": 0.12,
+      "units": "CHF/t-km",
+      "source": "Government fuel-supply-chain benchmark: Freight Australia reports refined fuel road freight rates of about AUD 0.13 per tonne-kilometre; converted approximately to a CHF-equivalent screening range.",
+      "source_url": "https://www.freightaustralia.gov.au/sites/default/files/documents/commodity-report--fuel.pdf"
+    },
+    "airport_terminal_and_tankage_chf_per_year": {
+      "min": 0.0,
+      "base": 0.0,
+      "max": 0.0,
+      "units": "CHF/year",
+      "source": "Not monetised in the base screening model because airport tankage and hydrant costs are highly site-specific. IATA guidance confirms that airport fuel storage capacity must be assessed from airport-specific operating assumptions; this term is therefore excluded rather than represented by an unsupported generic value.",
+      "source_url": "https://www.iata.org/contentassets/ebdba50e57194019930d72722413edd4/guidance-fuel-storage-may08.pdf"
+    },
+    "wacc": {
+      "min": 0.06,
+      "base": 0.08,
+      "max": 0.1,
+      "units": "fraction",
+      "source": "Scenario finance range used for infrastructure screening and sensitivity analysis; consistent with the use of WACC as a key parameter in levelised-cost analysis such as IEA LCOH Maps.",
+      "source_url": "https://www.iea.org/data-and-statistics/data-tools/levelised-cost-of-hydrogen-maps"
+    },
+    "coproduct_credit_chf_per_tonne_saf": {
+      "min": 0.0,
+      "base": 0.0,
+      "max": 0.0,
+      "units": "CHF/t SAF",
+      "source": "No co-product credit is applied in the base model. This parameter is retained explicitly at zero to avoid an unsupported cost offset.",
+      "source_url": ""
+    },
+    "fixed_land_and_utilities_chf_per_year": {
+      "min": 30000000.0,
+      "base": 60000000.0,
+      "max": 90000000.0,
+      "units": "CHF/year",
+      "source": "Internal screening assumption for land lease, utilities, insurance and site services of a ~4 GW-scale PtL complex. Previously hard-coded (60 MCHF/y ~= 81 CHF/t SAF) with no provenance entry; now explicit so it is visible, sampled, and flagged for replacement with a sourced value.",
+      "source_url": ""
+    },
+    "h2_storage_capex_chf_per_kwh": {
+      "min": 1.0,
+      "base": 2.4,
+      "max": 8.0,
+      "units": "CHF/kWh_H2(LHV)",
+      "source": "Screening range for bulk hydrogen storage spanning geological (salt-cavern) storage at the low end to small above-ground pressurised storage at the high end; the base keeps the original model value (2.4 CHF/kWh = 80 CHF/kg H2). Site-specific - replace with a sourced value (e.g. IEA/BNEF hydrogen storage cost surveys) before publication.",
+      "source_url": ""
+    }
+  },
+  "validation_targets": {
+    "synthetic_saf_reference_eur_per_tonne_2025": {
+      "min": 6710.0,
+      "base": 7520.0,
+      "max": 9525.0,
+      "source": "EASA 2025 aviation fuel reference prices for ReFuelEU Aviation synthetic aviation fuels",
+      "source_url": "https://www.easa.europa.eu/en/document-library/general-publications/2025-aviation-fuels-reference-prices-refueleu-aviation"
+    }
+  }
+}

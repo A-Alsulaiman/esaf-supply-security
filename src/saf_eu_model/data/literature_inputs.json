@@ -1,0 +1,664 @@
+{
+ "meta": {
+  "inputs_version": "v8",
+  "price_basis": "All monetary parameters are expressed in real 2024 money (internal unit: USD-2024) in the currency given by each parameter's 'currency' tag (EUR unless stated). Source values published in earlier price years were inflated to 2024 using euro-area HICP (EUR2015 x1.245, EUR2019 x1.21, EUR2020 x1.20, EUR2022 x1.09) or US CPI-U (USD2019 x1.23, USD2020 x1.21, USD2022 x1.07); the factor used is stated in each note. Cost-year basis: nth-of-a-kind European plant commissioned ~2030.",
+  "currency_note": "Internal model unit is real USD-2024 (was CHF through v7). Values are converted from their tagged currency at meta.fx_to_usd on load. EUR reporting columns use the inverse 2024 rate (USD->EUR 0.9239).",
+  "default_scenario": "base",
+  "no_ghost_number_note": "Each numerical input carries a public source URL and a derivation note. Parameters without a harmonised public source are labelled 'internal screening assumption' and carry a wide range so the uncertainty sampling reflects their status.",
+  "no_hidden_credit_note": "No co-product or by-product credit is subtracted from delivered cost in the base model. coproduct_credit_chf_per_tonne_saf is retained explicitly at zero.",
+  "v7_note": "v7 replaces the v6 'USD relabelled as CHF 1:1' convention (review finding P16) with tagged currencies and explicit 2024-average FX. Parameter values are re-sourced to 2024-2026 literature for a ~2030 EU nth-of-a-kind plant; process physics (electrolyser efficiency, DAC energies, FT efficiency) are now sampled parameters; H2 seasonal storage is priced by geology (salt cavern vs lined rock cavern, see country_finance.json); missing cost terms added: raw+demineralised water net of DAC water recovery, airport receiving/fuel-farm adder, rail transport option, battery lifetime distinct from PV/wind, electrolyser stack replacement retained. The previous input set is preserved unchanged in literature_inputs_v6.json for A/B runs.",
+  "fx_to_usd": {
+   "EUR": 1.0824,
+   "USD": 1.0,
+   "CHF": 1.1362,
+   "rates_as_of": "2024 annual average ECB reference rates (USD/EUR 1.0824; implied USD/CHF 0.8801 -> CHF/USD 1.1362). Sources: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html ; https://www.estv.admin.ch/de/jahresmittelkurs-wpe"
+  },
+  "v8_note": "v8 additions: (1) full USD-2024 internal basis (parameter keys renamed _chf->_usd; v6/v7-era files remain loadable via aliases); (2) carbon-sourcing block - purchased biogenic CO2 (RFNBO-eligible under Del. Reg. (EU) 2023/1185 Annex pt. 10(c)) with distance-based delivery cost vs on-site DAC; (3) seasonally flexible plant: synthesis minimum-load and finished-fuel tank storage parameters (no seasonal H2 store in the v3 design; islanded plants face no EU temporal-correlation requirement, Del. Reg. (EU) 2023/1184 Art. 3); (4) capex economies-of-scale exponents for mandate-driven plant sizing (see scale.py); (5) mandate demand data in policy_demand.json + airport_fuel.csv. A 2050 technology overlay ships as literature_inputs_2050.json."
+ },
+ "parameters": {
+  "pv_capex_usd_per_kw": {
+   "min": 400.0,
+   "base": 520.0,
+   "max": 750.0,
+   "units": "per kW(AC), utility-scale total installed",
+   "currency": "EUR",
+   "source": "Danish Energy Agency Technology Data (utility PV 2030: 0.384 MEUR2020/MW_AC = ~461 EUR2024/kW); Fraunhofer ISE LCOE 2024 (German utility PV today: 700-900 EUR2024/kWp); JRC CETO PV in the EU 2024 (~EUR 460/kWp expectation 2024); PyPSA technology-data 2030 compilation 482 EUR2025/kW. IRENA RPGC 2024 global weighted average USD 691/kW marks the floor.",
+   "source_url": "https://ens.dk/en/analyses-and-statistics/technology-data-generation-electricity-and-district-heating ; https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf ; https://publications.jrc.ec.europa.eu/repository/bitstream/JRC139297/JRC139297_01.pdf ; https://www.irena.org/Publications/2025/Jun/Renewable-power-generation-costs-in-2024"
+  },
+  "wind_capex_usd_per_kw": {
+   "min": 1050.0,
+   "base": 1350.0,
+   "max": 1800.0,
+   "units": "per kW, onshore total installed",
+   "currency": "EUR",
+   "source": "Fraunhofer ISE LCOE 2024 (German onshore 1300-1900 EUR2024/kW); DEA Technology Data 2030 (1.0356 MEUR2015/MW = ~1290 EUR2024/kW); PyPSA technology-data 2030: 1383 EUR2025/kW; JRC CETO Wind 2025 global 2030 ~841 USD2024/kW marks the floor. v6 base 1800 sat at the top of the European evidence and v6 max 3260 had no onshore support.",
+   "source_url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf ; https://ens.dk/en/analyses-and-statistics/technology-data-generation-electricity-and-district-heating ; https://publications.jrc.ec.europa.eu/repository/bitstream/JRC144351/JRC144351_01.pdf"
+  },
+  "fom_pv": {
+   "min": 0.013,
+   "base": 0.02,
+   "max": 0.028,
+   "units": "fraction of PV capex per year",
+   "currency": "none",
+   "source": "JRC CETO PV 2024: EU utility O&M 6.8-14.8 EUR/kWp/y; Fraunhofer ISE 2024: 13.3 EUR/kW/y; DEA 2030: 9.5 EUR2020/kW/y. At base capex 520 EUR/kW the base fraction equals ~10.4 EUR/kW/y.",
+   "source_url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC139297/JRC139297_01.pdf"
+  },
+  "fom_wind": {
+   "min": 0.018,
+   "base": 0.026,
+   "max": 0.035,
+   "units": "fraction of wind capex per year",
+   "currency": "none",
+   "source": "Fraunhofer ISE 2024: 32 EUR/kW/y fixed + 0.007 EUR/kWh variable (~50 EUR/kW/y all-in); DEA 2030: ~17-18 EUR/kW/y all-in. Base 2.6% x 1350 EUR/kW = 35 EUR/kW/y. v6 3.5% of 1800 (=63 EUR/kW/y) exceeded modern full-service benchmarks.",
+   "source_url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf ; https://ens.dk/en/analyses-and-statistics/technology-data-generation-electricity-and-district-heating"
+  },
+  "battery_capex_usd_per_kwh": {
+   "min": 130.0,
+   "base": 190.0,
+   "max": 290.0,
+   "units": "per kWh, turnkey utility-scale (2-8 h systems), energy basis",
+   "currency": "EUR",
+   "source": "BNEF Energy Storage System Cost Survey 2025: Europe USD 177/kWh turnkey (global 117); NREL Cost Projections for Utility-Scale Battery Storage 2025 Update: 2030 4-h systems 207/279/354 USD2024/kWh; DEA storage catalogue 2030 ~195 EUR/kWh at 4 h; IRENA 2024 actual USD 192/kWh.",
+   "source_url": "https://docs.nrel.gov/docs/fy25osti/93281.pdf ; https://www.energy-storage.news/battery-storage-system-prices-continue-to-fall-sharply-bnef-and-ember-reports-find/ ; https://ens.dk/en/analyses-and-statistics/technology-data-energy-storage"
+  },
+  "life_battery": {
+   "min": 10.0,
+   "base": 15.0,
+   "max": 20.0,
+   "units": "years, battery economic lifetime",
+   "currency": "none",
+   "source": "NREL utility-scale battery storage 2025 update explicitly uses a 15-year life with augmentation treated via O&M; DEA projects 20-25 y technical life for 2030 vintages. v6 annualised the battery over 25 years like PV/wind, understating its annual cost ~25%.",
+   "source_url": "https://docs.nrel.gov/docs/fy25osti/93281.pdf"
+  },
+  "life_pv": {
+   "min": 25.0,
+   "base": 30.0,
+   "max": 40.0,
+   "units": "years, PV economic lifetime",
+   "currency": "none",
+   "source": "Fraunhofer ISE LCOE 2024 uses 30 y for utility PV; DEA technical lifetime 40 y for 2030 vintages; 25 y is the conservative harmonisation. v6 used 25.",
+   "source_url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
+  },
+  "life_wind": {
+   "min": 20.0,
+   "base": 25.0,
+   "max": 30.0,
+   "units": "years, onshore wind economic lifetime",
+   "currency": "none",
+   "source": "Fraunhofer ISE LCOE 2024 uses 25 y; DEA technical lifetime 30 y (range 25-35) for 2030 vintages. v6 value retained.",
+   "source_url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
+  },
+  "life_h2_storage": {
+   "min": 25.0,
+   "base": 30.0,
+   "max": 40.0,
+   "units": "years, geological H2 storage economic lifetime",
+   "currency": "none",
+   "source": "Salt/rock caverns are long-lived civil assets (natural-gas caverns operate for decades); 30 y screening base.",
+   "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0360319921030834"
+  },
+  "fom_battery": {
+   "min": 0.02,
+   "base": 0.025,
+   "max": 0.04,
+   "units": "fraction of battery capex per year",
+   "currency": "none",
+   "source": "NREL 2025 battery report: fixed O&M ~4% of power-basis capex including augmentation; on an energy-basis capex for 4-h systems this is ~2.5%/y. Base retained from v6.",
+   "source_url": "https://docs.nrel.gov/docs/fy25osti/93281.pdf"
+  },
+  "electrolyser_capex_usd_per_kw": {
+   "min": 700.0,
+   "base": 1100.0,
+   "max": 2000.0,
+   "units": "per kW(e), system EPC-exclusive direct cost at multi-hundred-MW scale (the model's balance-of-plant, owner and contingency multipliers are applied ON TOP; installed-equivalent base ~1670 EUR/kW)",
+   "currency": "EUR",
+   "source": "IEA Global Hydrogen Review 2025 Assumptions Annex: 2030 installed (incl. electric equipment, gas treatment, plant balancing, EPC) 1400-1820 USD2024/kW global (2024 actual 2000-2600; China 600-1200); JRC/European Hydrogen Observatory: current EU 100-200 MW projects 2630-3050 EUR/kW installed, system (stack+BoP) alone ALK ~1016 / PEM ~1209 EUR/kW; Clean Hydrogen JU SRIA 2030 factory targets ALK 400 / PEM 500 EUR/kW; Fraunhofer ISE bottom-up system 400-500 EUR2021/kW with installed ~2x system. v6 used IEA GHR2024 installed figures as if they were direct costs and then applied indirect multipliers again (double count).",
+   "source_url": "https://iea.blob.core.windows.net/assets/15673ab3-a86a-4434-bff4-490bb42d3563/GlobalHydrogenReview2025AssumptionsAnnex.pdf ; https://observatory.clean-hydrogen.europa.eu/hydrogen-landscape/production-trade-and-cost/electrolyser-cost ; https://www.clean-hydrogen.europa.eu/knowledge-management/strategy-map-and-key-performance-indicators/clean-hydrogen-ju-sria-key-performance-indicators-kpis_en"
+  },
+  "stack_replacement_frac": {
+   "min": 0.11,
+   "base": 0.2,
+   "max": 0.35,
+   "units": "fraction of installed electrolyser capex per replacement",
+   "currency": "none",
+   "source": "DOE Hydrogen Program Record 24005: PEM stack replacement 11% of total installed capital; IRENA Green Hydrogen Cost Reduction: stack 30-45% of (uninstalled) system cost. 2030 base 20% of installed.",
+   "source_url": "https://www.hydrogen.energy.gov/docs/hydrogenprogramlibraries/pdfs/24005-clean-hydrogen-production-cost-pem-electrolyzer.pdf ; https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2020/Dec/IRENA_Green_hydrogen_cost_2020.pdf"
+  },
+  "stack_life_years": {
+   "min": 7.0,
+   "base": 10.0,
+   "max": 12.0,
+   "units": "years (calendar interval between replacements; ~80,000 operating hours at 8,000 h/y full-load-equivalent)",
+   "currency": "none",
+   "source": "IEA GHR uses 50,000 h economic stack life (stacks reach ~95,000 h); IRENA: ALK 60,000 h, PEM 50,000-80,000 h today, 100,000 h target. Flexible (part-load) operation extends the calendar interval; 10 y base retained.",
+   "source_url": "https://iea.blob.core.windows.net/assets/15673ab3-a86a-4434-bff4-490bb42d3563/GlobalHydrogenReview2025AssumptionsAnnex.pdf"
+  },
+  "dac_capex_usd_per_tco2_year": {
+   "min": 410.0,
+   "base": 880.0,
+   "max": 1820.0,
+   "units": "per (tCO2/year) of capture capacity, low-temperature solid-sorbent DAC",
+   "currency": "EUR",
+   "source": "Fasihi, Efimova & Breyer 2019 (J. Cleaner Prod.): LT-DAC 730 EUR2019/(t/y) in 2020, falling to 338 (conservative) by 2030; Seymour et al. 2024 adopt 730 EUR2019/(t/y) for 2030 (= ~880 EUR2024, taken as base); max ~1500 EUR2019 (~1820 EUR2024) reflects FOAK evidence (Young et al. 2023 One Earth: FOAK S-DAC levelised 1300-3100 USD/t; Sievert, Schmidt & Steffen 2024 Joule: mature S-DAC ~374 USD/t only at Gt-scale). v6 min of 100 was below any published 2030 estimate and is removed.",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0959652619307772 ; https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se00978e ; https://www.cell.com/one-earth/fulltext/S2590-3322(23)00300-7 ; https://www.cell.com/joule/fulltext/S2542-4351(24)00060-6"
+  },
+  "dac_electricity_kwh_per_tco2": {
+   "min": 200.0,
+   "base": 250.0,
+   "max": 500.0,
+   "units": "kWh(e) per tCO2, LT solid-sorbent DAC (fans, controls, vacuum)",
+   "currency": "none",
+   "source": "Fasihi et al. 2019: 250 kWh/t (2020) -> 225 (2030) -> 203 (2040); Kueng et al. 2023 (EES, Climeworks co-authored): ~500 kWh/t measured today. v6 used 203 kWh/t, Fasihi's 2040 value; base moves to the 2030 estimate.",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0959652619307772 ; https://pubs.rsc.org/en/content/articlehtml/2023/ee/d3ee01008b"
+  },
+  "dac_heat_kwh_per_tco2": {
+   "min": 1100.0,
+   "base": 1500.0,
+   "max": 2000.0,
+   "units": "kWh(th) per tCO2 at 80-120 C regeneration, LT solid-sorbent DAC",
+   "currency": "none",
+   "source": "Fasihi et al. 2019: 1750 kWh/t (2020) -> 1500 (2030) -> 1286 (2040); IEA Direct Air Capture 2022: S-DAC total 7.2-9.5 GJ/t at 75-80% heat share. v6 used 1283 kWh/t (Fasihi 2040); base moves to the 2030 estimate.",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0959652619307772 ; https://www.iea.org/reports/direct-air-capture-2022"
+  },
+  "dac_water_recovery_t_per_tco2": {
+   "min": 0.8,
+   "base": 1.0,
+   "max": 2.0,
+   "units": "t H2O co-produced per tCO2 captured (credited against electrolysis water demand)",
+   "currency": "none",
+   "source": "IEA Direct Air Capture 2022: S-DAC extracts 0.8-2 t water per tCO2 alongside capture; Fasihi et al. 2019 quote the same Climeworks range. Humidity-dependent; temperate-Europe base 1.0.",
+   "source_url": "https://www.iea.org/reports/direct-air-capture-2022"
+  },
+  "ft_capex_usd_per_kw_liquid": {
+   "min": 550.0,
+   "base": 950.0,
+   "max": 1800.0,
+   "units": "per kW of full liquid slate output (LHV), direct cost incl. RWGS/syngas preparation and product upgrading/hydrocracking",
+   "currency": "EUR",
+   "source": "Seymour et al. 2024: FT incl. RWGS + refining 799 EUR2019/kW (2030) = ~967 EUR2024/kW; ICCT Zhou & Searle 2022: 450 USD2020/kW; Concawe 17/22 small-reference-scale (27.8 MW) train 1500-1800 EUR/kW marks the max. v6 base 1600 reflected small/FOAK trains and is roughly 2x the nth-of-a-kind literature at the model's ~2 GW-liquid scale.",
+   "source_url": "https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se00978e ; https://theicct.org/wp-content/uploads/2022/02/fuels-us-europe-current-future-cost-ekerosene-us-europe-mar22.pdf ; https://www.concawe.eu/publication/e-fuels-a-techno-economic-assessment-of-european-domestic-production-and-imports-towards-2050/"
+  },
+  "ft_energy_efficiency": {
+   "min": 0.65,
+   "base": 0.73,
+   "max": 0.8,
+   "units": "fraction, syngas-to-full-liquid-slate LHV energy efficiency",
+   "currency": "none",
+   "source": "ICCT 2022: 73%; Seymour et al. 2024: 65% (2030) rising to 80% (2050); Koenig et al. 2015 detailed flowsheet: 67% H2-to-liquids. v6 used 0.7667 (upper-middle of the band).",
+   "source_url": "https://theicct.org/wp-content/uploads/2022/02/fuels-us-europe-current-future-cost-ekerosene-us-europe-mar22.pdf ; https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se00978e ; https://elib.dlr.de/98357/"
+  },
+  "jet_energy_share": {
+   "min": 0.4,
+   "base": 0.57,
+   "max": 0.7,
+   "units": "fraction, kerosene share of the upgraded FT liquid slate by energy",
+   "currency": "none",
+   "source": "UBA/LBST Power-to-Liquids 2016: jet-suitable share 50-60% by energy; ICCT 2022 unoptimised slate: 40% kerosene; jet-maximised designs with wax hydrocracking and recycle reach ~70%+. Base retained at 0.57.",
+   "source_url": "https://www.umweltbundesamt.de/sites/default/files/medien/377/publikationen/161005_uba_hintergrund_ptl_barrierrefrei.pdf ; https://theicct.org/wp-content/uploads/2022/02/fuels-us-europe-current-future-cost-ekerosene-us-europe-mar22.pdf"
+  },
+  "electrolyser_kwh_per_kg_h2": {
+   "min": 47.0,
+   "base": 50.0,
+   "max": 53.0,
+   "units": "kWh(e) per kg H2, system level (incl. rectifier and BoP)",
+   "currency": "none",
+   "source": "Clean Hydrogen JU SRIA 2030 targets: ALK and PEM 48 kWh/kg system; Fraunhofer ISE bottom-up 2030: 47.6-49.4 kWh/kg; IEA GHR2025 conservative average 2030: ~52 kWh/kg; DOE Record 24005 US 2022 PEM average 57.5. Base 50 kWh/kg (= 66.7% LHV) is the v6 value, confirmed.",
+   "source_url": "https://www.clean-hydrogen.europa.eu/knowledge-management/strategy-map-and-key-performance-indicators/clean-hydrogen-ju-sria-key-performance-indicators-kpis_en ; https://iea.blob.core.windows.net/assets/15673ab3-a86a-4434-bff4-490bb42d3563/GlobalHydrogenReview2025AssumptionsAnnex.pdf"
+  },
+  "h2_compression_kwh_per_kg": {
+   "min": 0.6,
+   "base": 1.0,
+   "max": 1.5,
+   "units": "kWh(e) per kg H2, electrolyser outlet (~30 bar) to process/storage pressure (~100-200 bar)",
+   "currency": "none",
+   "source": "DOE Hydrogen Program Record 9013: ideal isothermal work 30->200 bar ~0.65 kWh/kg, real large machines at ~55-60% isentropic efficiency; HDSAM-based modelling 0.5-0.6 kWh/kg for smaller ratios. v6 used 0.66 kWh/kg (~the ideal work); base moves to a real-machine 1.0.",
+   "source_url": "https://www.hydrogen.energy.gov/pdfs/9013_energy_requirements_for_hydrogen_gas_compression.pdf"
+  },
+  "co2_compression_kwh_per_tco2": {
+   "min": 90.0,
+   "base": 115.0,
+   "max": 160.0,
+   "units": "kWh(e) per tCO2 from atmospheric capture outlet to synthesis pressure",
+   "currency": "none",
+   "source": "v6 value retained (consistent with standard multi-stage intercooled compression work to ~30-80 bar); range added for sampling.",
+   "source_url": "https://www.iea.org/reports/direct-air-capture-2022"
+  },
+  "heat_pump_cop": {
+   "min": 2.0,
+   "base": 2.5,
+   "max": 3.5,
+   "units": "coefficient of performance for DAC regeneration heat top-up (~100 C sink)",
+   "currency": "none",
+   "source": "v6 value retained; industrial high-temperature heat pumps delivering ~100 C achieve COP 2-3.5 depending on source temperature (IEA Energy Efficiency technology context).",
+   "source_url": "https://www.iea.org/reports/energy-efficiency-2024"
+  },
+  "heat_pump_capex_usd_per_kw": {
+   "min": 400.0,
+   "base": 600.0,
+   "max": 900.0,
+   "units": "per kW(e) of heat-pump drive power",
+   "currency": "EUR",
+   "source": "Screening range for large industrial heat pumps; minor cost item. v6 range retained with EUR tag.",
+   "source_url": "https://www.iea.org/reports/energy-efficiency-2024"
+  },
+  "compressor_capex_usd_per_kw": {
+   "min": 900.0,
+   "base": 1500.0,
+   "max": 2600.0,
+   "units": "per kW(e) of compressor drive power (H2 and CO2 process compression), direct cost before the model's indirect multipliers",
+   "currency": "EUR",
+   "source": "HDSAM/Argonne cost functions (Transition Accelerator 2023): ~1700 CAD2019/kW total capital even at 112 MW scale, 2400-3000 CAD/kW at 1-10 MW; Clean Hydrogen JU SRIA pipeline-compressor 2030 target 650-3500 EUR/kW. v6 value of 260/kW resembled a bare natural-gas machine and was ~6-10x below hydrogen-service evidence.",
+   "source_url": "https://transitionaccelerator.ca/wp-content/uploads/2023/06/The-Techno-Economics-of-Hydrogen-Pipelines-v2.pdf ; https://www.clean-hydrogen.europa.eu/knowledge-management/strategy-map-and-key-performance-indicators/clean-hydrogen-ju-sria-key-performance-indicators-kpis_en"
+  },
+  "h2_storage_capex_cavern_usd_per_kwh": {
+   "min": 0.5,
+   "base": 0.9,
+   "max": 1.6,
+   "units": "per kWh H2 (LHV) of working capacity, solution-mined salt cavern (= 17/30/53 EUR per kg H2)",
+   "currency": "EUR",
+   "source": "Papadias & Ahluwalia 2021 (IJHE): salt-cavern installed capital <19 USD2019/kg at 3000 t scale, ~25 USD/kg for multi-cavern stores; Clean Hydrogen JU SRIA 2030 target 30 EUR/kg for caverns >3000 t. Applied to countries with salt-cavern potential per Caglayan et al. 2020 (see country_finance.json). v6 single base of 2.4/kWh (80/kg) was 2-3x the cavern evidence.",
+   "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0360319921030834 ; https://www.clean-hydrogen.europa.eu/knowledge-management/strategy-map-and-key-performance-indicators/clean-hydrogen-ju-sria-key-performance-indicators-kpis_en ; https://www.sciencedirect.com/science/article/pii/S0360319919347299"
+  },
+  "h2_storage_capex_rock_usd_per_kwh": {
+   "min": 1.4,
+   "base": 1.9,
+   "max": 5.4,
+   "units": "per kWh H2 (LHV) of working capacity, lined rock cavern (= 47/63/180 EUR per kg H2); applied where no salt deposits exist (e.g. Finland, Sweden, Alpine states)",
+   "currency": "EUR",
+   "source": "Papadias & Ahluwalia 2021: LRC installed capital <44 USD2019/kg at 3000 t scale, ~160 USD/kg at 100 t (levelised ~1.7x salt caverns); Elberry et al. 2021 (IJHE): no salt-cavern potential in Finland/Sweden, steel-lined rock cavern (Skallen, 200 bar) is the proven Nordic design. Above-ground vessels (~500-750 USD/kg) are excluded as uninvestable at 15-20 kt scale.",
+   "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0360319921030834 ; https://acris.aalto.fi/ws/portalfiles/portal/61225644/ENG_Elberry_et_al_Large_scale_compresssed_hydrogen_storage_International_Journal_of_Hydrogen_Energy.pdf"
+  },
+  "fom_h2_storage": {
+   "min": 0.015,
+   "base": 0.02,
+   "max": 0.04,
+   "units": "fraction of storage capex per year",
+   "currency": "none",
+   "source": "v6 value retained (geological storage O&M incl. compressor maintenance).",
+   "source_url": ""
+  },
+  "h2_path_efficiency": {
+   "min": 0.93,
+   "base": 0.95,
+   "max": 0.97,
+   "units": "fraction, energy-equivalent efficiency of the store-then-feed H2 path (cavern cycling compression + leakage; no reconversion)",
+   "currency": "none",
+   "source": "Peng et al. 2025 (Sci. Rep.): cumulative salt-cavern leakage <0.4% over 30 y of cycling; Elberry et al. 2021: 94.9-97.1% storage efficiency incl. auxiliaries; ~1 kWh/kg cycling compression = ~3% of LHV. v6 used 0.90 (pessimistic).",
+   "source_url": "https://www.nature.com/articles/s41598-024-84505-x ; https://acris.aalto.fi/ws/portalfiles/portal/61225644/ENG_Elberry_et_al_Large_scale_compresssed_hydrogen_storage_International_Journal_of_Hydrogen_Energy.pdf"
+  },
+  "co2_storage_capex_usd_per_tco2": {
+   "min": 180.0,
+   "base": 260.0,
+   "max": 420.0,
+   "units": "per tCO2 of buffer capacity (liquid CO2 tankage)",
+   "currency": "EUR",
+   "source": "Internal screening assumption retained from v6 (now EUR-tagged and sampled); buffer is sized in days so the total is small (~4 CHF/t SAF).",
+   "source_url": ""
+  },
+  "co2_buffer_days": {
+   "min": 3.0,
+   "base": 10.0,
+   "max": 15.0,
+   "units": "days of CO2 throughput held as plant buffer",
+   "currency": "none",
+   "source": "Screening assumption (v6 base retained, range added).",
+   "source_url": ""
+  },
+  "h2_buffer_days": {
+   "min": 2.0,
+   "base": 5.0,
+   "max": 10.0,
+   "units": "days of H2 throughput held as plant buffer (priced at the same geology-dependent storage cost as the seasonal store)",
+   "currency": "none",
+   "source": "Screening assumption (v6 base retained, range added).",
+   "source_url": ""
+  },
+  "balance_of_plant_frac": {
+   "min": 0.15,
+   "base": 0.18,
+   "max": 0.3,
+   "units": "fraction of direct process capex (offsites/utilities/interconnection)",
+   "currency": "none",
+   "source": "NETL QGESS cost-estimation methodology: offsites/BoP 15-30% of ISBL for chemical-plant screening estimates. v6 base retained inside the sourced range.",
+   "source_url": "https://www.netl.doe.gov/projects/files/QGESSCostEstimationMethodologyforNETLAssessmentsofPowerPlantPerformance_043011.pdf"
+  },
+  "owner_cost_frac": {
+   "min": 0.08,
+   "base": 0.12,
+   "max": 0.2,
+   "units": "fraction (owner's costs: development, land, permitting, spares, preproduction)",
+   "currency": "none",
+   "source": "NETL QGESS: owner's costs ~15% of total plant cost plus preproduction/inventory/financing (~20% all-in). v6 8% was below screening practice; base raised to 12%.",
+   "source_url": "https://www.netl.doe.gov/projects/files/QGESSCostEstimationMethodologyforNETLAssessmentsofPowerPlantPerformance_043011.pdf"
+  },
+  "contingency_frac": {
+   "min": 0.1,
+   "base": 0.15,
+   "max": 0.3,
+   "units": "fraction (project + process contingency)",
+   "currency": "none",
+   "source": "NETL/AACE: project contingency 15-30% for Class 4/5 estimates, process contingency higher for units without full-scale operating history (RWGS, DAC). v6 12% was below the sourced floor; base raised to 15%.",
+   "source_url": "https://www.netl.doe.gov/projects/files/QGESSCostEstimationMethodologyforNETLAssessmentsofPowerPlantPerformance_043011.pdf"
+  },
+  "process_opex_frac": {
+   "min": 0.03,
+   "base": 0.04,
+   "max": 0.05,
+   "units": "fraction of process capex per year (fixed O&M excl. stack replacement)",
+   "currency": "none",
+   "source": "Fasihi et al. 2019 use 4%/y for DAC; Seymour et al. 2024 use 1-4%/y by component. v6 base retained.",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0959652619307772"
+  },
+  "plant_availability": {
+   "min": 0.85,
+   "base": 0.9,
+   "max": 0.95,
+   "units": "fraction, synthesis-island availability (8760 h basis)",
+   "currency": "none",
+   "source": "8000 h/y (91.3%) is the standard chemical-plant convention in PtL TEAs (Meurer et al. 2024, Fasihi et al. 2019); ICCT uses 95% for grid-buffered plants. v6 base 0.90 retained.",
+   "source_url": "https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se01156a"
+  },
+  "water_demand_kg_per_kg_h2": {
+   "min": 10.0,
+   "base": 20.0,
+   "max": 32.0,
+   "units": "kg raw water withdrawn per kg H2 (stoichiometric 9 plus demineralisation reject and cooling make-up)",
+   "currency": "none",
+   "source": "IRENA & Bluerisk, Water for Hydrogen Production 2023: consumption 17.5 L/kg (PEM) and 22.3 L/kg (ALK), withdrawal up to 32 L/kg; practical literature band 20-30 L/kg. New in v7 - water was not costed in v6.",
+   "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2023/Dec/IRENA_Bluerisk_Water_for_hydrogen_production_2023.pdf"
+  },
+  "water_cost_usd_per_m3": {
+   "min": 1.0,
+   "base": 2.5,
+   "max": 6.5,
+   "units": "per m3 of demineralised water delivered to the electrolyser (raw industrial supply + treatment)",
+   "currency": "EUR",
+   "source": "EurEau Europe's Water in Figures 2026: average European water-services tariff 3.59 EUR/m3 (residential, incl. wastewater - industrial supply typically 1-2.5 EUR/m3); KIT 2025 (Desalination): full-chain ultrapure water 2.3-5.5 EUR/m3; EDI polishing ~0.6 USD/m3. Desert reference cases (SAU/ARE/MAR) should sit mid-to-high in this range (SWRO 0.4-1.5 USD/m3 plus inland delivery; World Bank 2019, DEWA Hassyan 2023 record 0.389 USD/m3).",
+   "source_url": "https://eureau.org/wp-content/uploads/2026/06/FINAL_Europes-Water-in-Figures-Report-2026.pdf ; https://publikationen.bibliothek.kit.edu/1000181039 ; https://documents1.worldbank.org/curated/en/476041552622967264/pdf/135312-WP-PUBLIC-14-3-2019-12-3-35-W.pdf"
+  },
+  "road_variable_usd_per_tkm": {
+   "min": 0.05,
+   "base": 0.085,
+   "max": 0.14,
+   "units": "per tonne-km, jet fuel by ADR tanker truck, 200-650 km hauls",
+   "currency": "EUR",
+   "source": "Derived from CNR European road-haulage cost studies: full cost 1.19-1.25 EUR/vkm (DE 2021, ES 2023) to 1.5-1.8 EUR/vkm (FR market 2026), +10-30% ADR/tanker premium, ~25 t payload, empty-return factor 1.2-2.0. Base: 1.40 EUR/vkm x 1.5 / 25 t = 0.084 EUR/tkm. v6 min 0.035 implied <0.9 EUR/vkm with no empty running (an Australian benchmark, dropped).",
+   "source_url": "https://www.cnr.fr/download/file/publications/CNR%20-%20The%20German%20road%20freight%20transport%20sector%20-%202021.pdf ; https://www.cnr.fr/download/file/publications/CNR%20-%20The%20Spanish%20road%20freight%20transport%20-%202023.pdf"
+  },
+  "rail_variable_usd_per_tkm": {
+   "min": 0.027,
+   "base": 0.042,
+   "max": 0.058,
+   "units": "per tonne-km, jet fuel in dedicated block trains (tank cars), incl. traction and wagon hire",
+   "currency": "EUR",
+   "source": "Bundesnetzagentur Marktuntersuchung Eisenbahnen 2023: German rail freight average revenue 4.4 ct/tkm (2022, all traffic incl. single-wagon); ~23 EUR/train-km implies ~2.3 ct/tkm for 1000 t block trains. Mineral-oil unit trains sit between. New in v7 - rail mode was disabled in v6.",
+   "source_url": "https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Eisenbahn/Unternehmen_Institutionen/Veroeffentlichungen/Marktuntersuchungen/MarktuntersuchungEisenbahnen/MarktuntersuchungEisenbahnen2023.pdf"
+  },
+  "rail_terminal_usd_per_tonne": {
+   "min": 2.0,
+   "base": 3.5,
+   "max": 6.0,
+   "units": "per tonne, loading + unloading transfer at rail terminals (both ends)",
+   "currency": "EUR",
+   "source": "Internal screening assumption for two liquid-bulk transloads; flagged for replacement with a sourced terminal tariff.",
+   "source_url": ""
+  },
+  "pipeline_capex_usd_per_km": {
+   "min": 1500000.0,
+   "base": 2500000.0,
+   "max": 4500000.0,
+   "units": "per km, 8-16 inch refined-product pipeline",
+   "currency": "EUR",
+   "source": "ACER Unit Investment Cost Indicators 2026: European 12-16 inch pipelines mean 2.24 / median 2.08 MEUR/km; US benchmarks higher (OGJ 2015-16 ~4.75 MUSD/km). Pipeline only offered above pipeline_min_tonnes_per_year (Concawe 23/6: 84% of European product lines <16 inch; 740 kt/y is below viable dedicated-line scale).",
+   "source_url": "https://www.acer.europa.eu/sites/default/files/documents/Publications/ACER-2026-Unit-Investment-Cost-Indicators.pdf ; https://www.concawe.eu/wp-content/uploads/Report_23-6.pdf"
+  },
+  "electricity_price_usd_per_kwh_logistics": {
+   "min": 0.12,
+   "base": 0.18,
+   "max": 0.26,
+   "units": "per kWh, grid electricity for pipeline pumping",
+   "currency": "EUR",
+   "source": "Eurostat electricity price statistics: EU-27 non-household average 0.1837 EUR/kWh (H2-2025, band IC, excl. VAT). v6 used 0.10 flat.",
+   "source_url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_price_statistics"
+  },
+  "airport_fee_usd_per_tonne": {
+   "min": 1.5,
+   "base": 5.0,
+   "max": 12.0,
+   "units": "per tonne of fuel delivered: airport receiving, fuel-farm and hydrant infrastructure adder",
+   "currency": "EUR",
+   "source": "Vienna Airport Entgeltordnung 2026: fuelling infrastructure charge 3.74 EUR/m3 (~4.7 EUR/t at 0.8 t/m3); Perth Airport jet fuel infrastructure charge 1.54 AUc/L (~19 AUD/t, full capex recovery + O&M) marks the max; IATA guidance (~3-5 days cover) implies new-build tankage alone is ~0.5-1 EUR/t annualised. v6 explicitly excluded this term (0); v7 monetises it.",
+   "source_url": "https://viennaairport.com/jart/prj3/va/uploads/data-uploads/Entgelte/Flughafen_Wien_Entgeltordnung_2026.pdf ; https://www.perthairport.com.au/home/corporate/work-with-us/jet-fuel-infrastructure/charges ; https://www.iata.org/contentassets/ebdba50e57194019930d72722413edd4/guidance-fuel-storage-may08.pdf"
+  },
+  "wacc": {
+   "min": 0.04,
+   "base": 0.055,
+   "max": 0.08,
+   "units": "fraction, real pre-tax WACC (uniform fallback when country mode is off)",
+   "currency": "none",
+   "source": "Uniform fallback re-based to the NW-European renewables range (AURES II survey; UK DESNZ 2025 real pre-tax solar 5.0% / onshore wind 5.8%). Country-specific values in country_finance.json are used by default (wacc_mode=country).",
+   "source_url": "https://zenodo.org/records/5572754 ; https://assets.publishing.service.gov.uk/media/68ba91f411b4ded2da19fe92/onshore-wind-and-solar-pv-cost-electricity-report-update-2024.pdf"
+  },
+  "wacc_country_delta": {
+   "min": -0.015,
+   "base": 0.0,
+   "max": 0.015,
+   "units": "additive perturbation applied to the per-country WACC in uncertainty sampling",
+   "currency": "none",
+   "source": "Sampling band covering survey vintage (2019-2021), nominal-to-real conversion and post-2022 rate-environment uncertainty.",
+   "source_url": ""
+  },
+  "wacc_process_premium": {
+   "min": 0.0,
+   "base": 0.01,
+   "max": 0.02,
+   "units": "additive premium on the process-plant WACC over the renewables WACC (technology/offtake risk)",
+   "currency": "none",
+   "source": "Internal screening assumption: first-mover PtL synthesis plants finance above pure renewables; flagged for replacement with a sourced hydrogen-project cost-of-capital estimate.",
+   "source_url": ""
+  },
+  "fixed_land_and_utilities_usd_per_year": {
+   "min": 34000000.0,
+   "base": 68000000.0,
+   "max": 102000000.0,
+   "units": "USD/year",
+   "currency": "USD",
+   "source": "Internal screening assumption for land lease, utilities, insurance and site services of a ~4 GW-scale PtL complex (~92 USD/t at the 740 kt reference size). Explicit and sampled; flagged for replacement with a sourced value. Restated in USD-2024 (60 MCHF x 1.1362). v8: scales with plant size at exponent fixed_cost_scale_exponent.",
+   "source_url": ""
+  },
+  "coproduct_credit_usd_per_tonne_saf": {
+   "min": 0.0,
+   "base": 0.0,
+   "max": 0.0,
+   "units": "CHF/t SAF",
+   "currency": "CHF",
+   "source": "No co-product credit in the base model; retained explicitly at zero. The energy-allocated delivered-cost column provides the comparable figure for allocation-based studies.",
+   "source_url": ""
+  },
+  "airport_terminal_and_tankage_usd_per_year": {
+   "min": 0.0,
+   "base": 0.0,
+   "max": 0.0,
+   "units": "CHF/year (legacy fixed term; superseded by airport_fee_chf_per_tonne)",
+   "currency": "CHF",
+   "source": "Retained at zero for backward compatibility; the per-tonne airport adder replaces it.",
+   "source_url": ""
+  },
+  "co2_capture_cost_usd_per_t": {
+   "min": 25.0,
+   "base": 70.0,
+   "max": 115.0,
+   "units": "per tCO2 captured+conditioned at biogenic point sources (blend of amine flue-gas capture at pulp/CHP/WtE with a minor high-purity fermentation/upgrading share)",
+   "currency": "EUR",
+   "source": "Onarheim et al. 2017 (IJGGC): pulp mills 52-89 EUR/t avoided (~62-107 EUR2024); bioethanol fermentation 15-35 USD/t (IEA); biogas upgrading 10-70 EUR/t (SEMPRE-BIO 2024/OIES); WtE 50-120 EUR/t (ZWE 2024, Roussanaly 2020). Base 70 EUR reflects the amine-dominated scalable stream.",
+   "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S1750583617303766 ; https://www.iea.org/commentaries/is-carbon-capture-too-expensive ; https://sempre-bio.com/wp-content/uploads/2024/10/SB-WP4-D4.1-OpportunitiesValorizationCO2-PU.pdf ; https://circulareconomy.europa.eu/platform/sites/default/files/2024-02/Report%20ZWE.pdf"
+  },
+  "co2_liquefaction_usd_per_t": {
+   "min": 7.0,
+   "base": 18.0,
+   "max": 26.0,
+   "units": "per tCO2, liquefaction for truck/rail logistics (~15 bar, -28 C; 80-160 kWh/t)",
+   "currency": "EUR",
+   "source": "ZEP 2011: 5.3 EUR2009/t at multi-Mt scale (~7 EUR2024); Chen & Morosuk 2021 / UCL 2025: 16-21 USD/t; DEA CCTS catalogue small-scale ~25 EUR/t.",
+   "source_url": "https://zeroemissionsplatform.eu/wp-content/uploads/2025/07/CO2-Transport-Report-.pdf ; https://www.mdpi.com/1996-1073/14/21/7174 ; https://ens.dk/en/analyses-and-statistics/technology-data-carbon-capture-transport-and-storage"
+  },
+  "co2_purity_polish_usd_per_t": {
+   "min": 0.0,
+   "base": 5.0,
+   "max": 10.0,
+   "units": "per tCO2, polishing to RWGS/FT feed spec (guard beds; O2/S/NOx attention)",
+   "currency": "EUR",
+   "source": "Dieterich et al. 2020 (EES) treat CO2 polishing as guard-bed-level cost embedded in conditioning; assumption band retained explicitly.",
+   "source_url": "https://pubs.rsc.org/en/content/articlehtml/2020/ee/d0ee01187h"
+  },
+  "co2_transfer_fixed_usd_per_t": {
+   "min": 1.0,
+   "base": 2.0,
+   "max": 4.0,
+   "units": "per tCO2, loading/unloading/staging",
+   "currency": "USD",
+   "source": "Stolaroff et al. 2021 (Frontiers): ~2 USD/t staging+loading adder for non-pipeline CO2 logistics.",
+   "source_url": "https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2021.639943/full"
+  },
+  "co2_truck_usd_per_tkm": {
+   "min": 0.08,
+   "base": 0.12,
+   "max": 0.17,
+   "units": "per tCO2 per km, liquid CO2 trucking (50-300 km hauls)",
+   "currency": "EUR",
+   "source": "Stolaroff et al. 2021: 0.111 USD/t-km cryogenic trucking; Becattini et al. 2024 (ETH): ~1 EUR/t per 10 km European inland rule of thumb.",
+   "source_url": "https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2021.639943/full ; https://www.research-collection.ethz.ch/server/api/core/bitstreams/de0d03f6-e73b-48e4-8b5a-06d1aa0dce9e/content"
+  },
+  "co2_contractable_share": {
+   "min": 0.15,
+   "base": 0.3,
+   "max": 0.5,
+   "units": "fraction of the mapped national biogenic point-source potential contractable for e-SAF (competition from BECCS/other users, retrofit reality)",
+   "currency": "none",
+   "source": "Screening assumption spread; potential data per country_biogenic_co2.json (BEST/Bioenergy Europe 2025; Rosa et al. 2021 cross-check).",
+   "source_url": "https://bioenergyeurope.org/wp-content/uploads/2025/06/BECCS-Report_final.pdf"
+  },
+  "co2_max_haul_km": {
+   "min": 150.0,
+   "base": 300.0,
+   "max": 450.0,
+   "units": "km, maximum economic collection radius for trucked biogenic CO2; beyond it on-site DAC covers the remainder",
+   "currency": "none",
+   "source": "At 0.12 EUR/t-km a 300 km haul adds ~36 EUR/t - approaching the DAC cost delta; rail/pipeline aggregation beyond this is out of screening scope.",
+   "source_url": ""
+  },
+  "ft_min_load_frac": {
+   "min": 0.4,
+   "base": 0.5,
+   "max": 0.8,
+   "units": "fraction of installed synthesis capacity, minimum continuous load (FT+RWGS turndown)",
+   "currency": "none",
+   "source": "Concawe 24-4 planning assumptions: 80% minimum part load for 2020-2030 cases, 50% for 2050; Seymour et al. 2024 use an 80% floor; KIT pilot demonstrated ~40% with <20% projected at scale (Loewert & Pfeifer 2020). Base 0.5 assumes train-level modularity (idling one of several trains).",
+   "source_url": "https://www.concawe.eu/wp-content/uploads/Rpt_24-4-1.pdf ; https://www.mdpi.com/2305-7084/4/2/27 ; https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se00978e"
+  },
+  "product_storage_usd_per_m3": {
+   "min": 150.0,
+   "base": 300.0,
+   "max": 550.0,
+   "units": "per m3 installed, on-site finished-jet tank farm (API 650-class, incl. civil/pumps at base)",
+   "currency": "USD",
+   "source": "IEA 2018 emergency-stockholding: new above-ground tankage 110-150 EUR/m3; Thunder Said: 100-300 USD/m3 tank-only, ~500 USD/m3 (80 USD/bbl) full terminal; CRS: 15-18 USD/bbl large product tanks.",
+   "source_url": "https://iea.blob.core.windows.net/assets/661e43e8-38df-4df0-a5ce-0af753696e40/Insights_Series_2018_Costs_and_Benefits_of_Emergency_Stockholding.pdf ; https://thundersaidenergy.com/downloads/storage-tank-costs-storing-oil-energy-water-and-chemicals/"
+  },
+  "fom_product_storage": {
+   "min": 0.01,
+   "base": 0.015,
+   "max": 0.03,
+   "units": "fraction of tank capex per year",
+   "currency": "none",
+   "source": "Pfennig et al. 2023 storage O&M band 1-1.5%/y; terminal practice up to 3%.",
+   "source_url": "https://arxiv.org/abs/2208.14887"
+  },
+  "life_product_storage": {
+   "min": 25.0,
+   "base": 30.0,
+   "max": 40.0,
+   "units": "years, tank farm economic life",
+   "currency": "none",
+   "source": "Standard steel-tank service life.",
+   "source_url": ""
+  },
+  "ft_scale_exponent": {
+   "min": 0.6,
+   "base": 0.67,
+   "max": 0.72,
+   "units": "capex exponent, FT+RWGS+upgrading within a single train (~<=340 kt/y jet); number-up at 0.92 above",
+   "currency": "none",
+   "source": "Kreutz et al. 2008: FT synthesis 0.60, syngas processing 0.70, upgrading 0.65; single-train max ~12,500 bbl/d; NETL GTL baseline uses 4 parallel trains at 50,000 bbl/d.",
+   "source_url": "https://acee.princeton.edu/wp-content/uploads/2016/10/Kreutz-et-al-PCC-2008-10-7-08.pdf"
+  },
+  "electrolyser_scale_exponent": {
+   "min": 0.9,
+   "base": 0.95,
+   "max": 1.0,
+   "units": "capex exponent above ~100 MW (modular; 0.80 below)",
+   "currency": "none",
+   "source": "DEA 10/100/1000 MW electrolyser datasheets imply n=0.80 (10->100 MW) and 0.96 (100 MW->1 GW); Reksten et al. 2022 quasi-linear above ~10 MW.",
+   "source_url": "https://ens.dk/en/analyses-and-statistics/technology-data-renewable-fuels ; https://www.sciencedirect.com/science/article/pii/S0360319922040253"
+  },
+  "dac_scale_exponent": {
+   "min": 0.9,
+   "base": 0.95,
+   "max": 1.0,
+   "units": "capex exponent, solid-sorbent DAC (container-modular; shared BoP only)",
+   "currency": "none",
+   "source": "Fasihi et al. 2019 model DAC as modular (learning, not scale); NETL sorbent case is modular adsorber trains.",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0959652619307772 ; https://www.netl.doe.gov/projects/files/DirectAirCaptureCaseStudiesSorbentSystem_070822.pdf"
+  },
+  "compressor_scale_exponent": {
+   "min": 0.62,
+   "base": 0.78,
+   "max": 0.88,
+   "units": "capex exponent, process compressors (0.1-30 MW per machine; parallel beyond)",
+   "currency": "none",
+   "source": "NETL QGESS CO2-compression exponents 0.61-0.88; Towler & Sinnott centrifugal correlation n~0.6-0.8.",
+   "source_url": "https://netl.doe.gov/projects/files/QGESSCapitalCostScalingMethodologyRevision3ReportsandPrior_040119.pdf"
+  },
+  "generic_scale_exponent": {
+   "min": 0.6,
+   "base": 0.7,
+   "max": 0.75,
+   "units": "capex exponent, heat pump/buffers/other units (six-tenths class)",
+   "currency": "none",
+   "source": "Six-tenths rule / NETL QGESS BoP accounts 0.43-0.77.",
+   "source_url": "https://netl.doe.gov/projects/files/QGESSCapitalCostScalingMethodologyRevision3ReportsandPrior_040119.pdf"
+  },
+  "fixed_cost_scale_exponent": {
+   "min": 0.5,
+   "base": 0.6,
+   "max": 0.7,
+   "units": "exponent for the fixed land/utilities/site-services term vs plant size",
+   "currency": "none",
+   "source": "Screening assumption: site services scale sub-linearly.",
+   "source_url": ""
+  }
+ },
+ "validation_targets": {
+  "synthetic_saf_reference_eur_per_tonne_2025": {
+   "min": 6710.0,
+   "base": 7520.0,
+   "max": 9525.0,
+   "source": "EASA 2026 Briefing Note (2025 aviation fuels reference prices, ReFuelEU Art. 13): synthetic aviation fuels weighted average EUR 7,520/t, range 6,710-9,525/t.",
+   "source_url": "https://www.easa.europa.eu/en/document-library/general-publications/2025-aviation-fuels-reference-prices-refueleu-aviation"
+  },
+  "synthetic_saf_atmospheric_co2_reference_eur_per_tonne_2025": {
+   "min": 7815.0,
+   "base": 8625.0,
+   "max": 9525.0,
+   "source": "EASA 2026 Briefing Note, synthetic aviation fuel from ATMOSPHERIC CO2 (the DAC pathway this model represents): average EUR 8,625/t, range 7,815-9,525/t. This subcategory, not the all-synthetic average, is the like-for-like comparator.",
+   "source_url": "https://www.easa.europa.eu/en/document-library/general-publications/2025-aviation-fuels-reference-prices-refueleu-aviation"
+  },
+  "esaf_2030_first_plants_eur_per_tonne": {
+   "min": 5000.0,
+   "base": 6500.0,
+   "max": 8000.0,
+   "source": "Project SkyPower Insights Report (Oct 2024): unsubsidised levelised e-SAF cost EUR 5,000-8,000/t for 2030 European first plants; long-term floor EUR 3,000-4,000/t.",
+   "source_url": "https://project-skypower.org/sites/default/files/2024-10/Project%20SkyPower%20Insights%20Report%20Oct%202024_final.pdf"
+  }
+ }
+}
