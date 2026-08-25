@@ -33,6 +33,8 @@ PKG = os.path.dirname(HERE)
 
 BLUE = "#2a78d6"    # domestic below import parity
 RED = "#e34948"     # domestic above import parity
+AQUA = "#1baf7a"    # receiving (import) ports
+GRAY = "#52514e"    # export production sites, inland links
 INK = "#0b0b0b"
 INK2 = "#52514e"
 MUTED = "#8a8880"
@@ -53,14 +55,24 @@ plt.rcParams.update({
 # ---------------------------------------------------------------- data
 dom = pd.read_csv(os.path.join(PKG, "results_v8_2030", "summary_all_airports.csv"))
 dom = dom[dom["scenario_year"] == 2030][
-    ["country_iso3", "delivered_cost_usd_per_tonne_saf", "best_lat", "best_lon"]
+    ["country_iso3", "delivered_cost_usd_per_tonne_saf", "best_lat", "best_lon",
+     "airport_lat", "airport_lon"]
 ].rename(columns={"delivered_cost_usd_per_tonne_saf": "dom_usd_t"})
+
+ports = pd.read_csv(os.path.join(PKG, "import_case", "import_ports.csv"))[
+    ["country", "port_lat", "port_lon"]
+].rename(columns={"country": "country_iso3"})
+
+exp = pd.read_csv(os.path.join(PKG, "import_case", "export_production_raw.csv"))
+exp = exp[exp["year"] == 2030][
+    ["exporter", "export_port", "export_port_lat", "export_port_lon", "best_lat", "best_lon"]
+]
 
 imp = pd.read_csv(os.path.join(PKG, "import_case", "import_best_by_country.csv"))
 imp = imp[imp["year"] == 2030][["country", "import_delivered_usd_t"]] \
     .rename(columns={"country": "country_iso3", "import_delivered_usd_t": "imp_usd_t"})
 
-df = dom.merge(imp, on="country_iso3", how="inner")
+df = dom.merge(imp, on="country_iso3", how="inner").merge(ports, on="country_iso3", how="left")
 df["premium_pct"] = (df["dom_usd_t"] - df["imp_usd_t"]) / df["imp_usd_t"] * 100.0
 df = df.sort_values("dom_usd_t").reset_index(drop=True)
 
@@ -137,21 +149,55 @@ for exp_key in routes:
         ax.plot(xs, ys, color=LANE, lw=0.8, alpha=0.85, zorder=2,
                 solid_capstyle="round")
 
-TERMS = {"Yanbu": (38.1, 24.1), "Jebel Ali": (55.05, 25.0), "Ad Dakhla": (-15.93, 23.7)}
-for name, (lon, lat) in TERMS.items():
-    ax.plot(lon, lat, marker="s", ms=6.5, color=INK, zorder=4)
-    dy = -2.6 if name != "Jebel Ali" else 2.2
-    ax.text(lon + 0.8, lat + dy, name, fontsize=8.5, color=INK,
-            fontweight="bold", zorder=5)
+DASH = dict(color=GRAY, lw=0.65, alpha=0.55, ls=(0, (2.2, 2.2)), zorder=3)
 
+# inland legs: production site -> hub airport, receiving port -> hub airport
+for _, r in df.iterrows():
+    ax.plot([r.best_lon, r.airport_lon], [r.best_lat, r.airport_lat], **DASH)
+    if pd.notna(r.port_lon):
+        ax.plot([r.port_lon, r.airport_lon], [r.port_lat, r.airport_lat], **DASH)
+
+# export side: production site -> export terminal, both as points
+TERM_LABEL = {"King Fahd Port": "Yanbu", "Mina Jabal Ali": "Jebel Ali", "Ad Dakhla": "Ad Dakhla"}
+for _, r in exp.iterrows():
+    ax.plot([r.best_lon, r.export_port_lon], [r.best_lat, r.export_port_lat], **DASH)
+    ax.plot(r.best_lon, r.best_lat, "o", ms=4.6, color=GRAY, mec=SURF, mew=0.7, zorder=5)
+    ax.plot(r.export_port_lon, r.export_port_lat, "o", ms=5.0, color=INK,
+            mec=SURF, mew=0.7, zorder=5)
+    name = TERM_LABEL[r.export_port]
+    dy = -2.9 if name != "Jebel Ali" else 2.0
+    ax.text(r.export_port_lon + 0.8, r.export_port_lat + dy, name, fontsize=8.5,
+            color=INK, fontweight="bold", zorder=6)
+
+# receiving ports and hub airports
+for _, r in df.iterrows():
+    if pd.notna(r.port_lon):
+        ax.plot(r.port_lon, r.port_lat, "o", ms=4.0, color=AQUA, mec=SURF, mew=0.6, zorder=4)
+    ax.plot(r.airport_lon, r.airport_lat, "o", ms=3.6, mfc=SURF, mec=INK, mew=0.9, zorder=6)
+
+# domestic production sites, colored by parity with the cheapest import
 for _, r in df.iterrows():
     c = BLUE if r.premium_pct < 0 else RED
     ax.plot(r.best_lon, r.best_lat, "o", ms=4.6, color=c,
             mec=SURF, mew=0.7, zorder=5)
 
+handles_map = [
+    Line2D([], [], marker="o", ls="", color=BLUE, ms=5.5, label="domestic plant, below import parity"),
+    Line2D([], [], marker="o", ls="", color=RED, ms=5.5, label="domestic plant, above import parity"),
+    Line2D([], [], marker="o", ls="", mfc=SURF, mec=INK, mew=1.0, ms=5.0, label="hub airport"),
+    Line2D([], [], marker="o", ls="", color=AQUA, ms=5.0, label="receiving port"),
+    Line2D([], [], marker="o", ls="", color=INK, ms=5.5, label="export terminal"),
+    Line2D([], [], marker="o", ls="", color=GRAY, ms=5.5, label="export production site"),
+    Line2D([], [], color=LANE, lw=1.2, label="routed sea lane"),
+    Line2D([], [], color=GRAY, lw=1.0, ls=(0, (2.2, 2.2)), label="inland leg"),
+]
+ax.legend(handles=handles_map, loc="upper right", fontsize=7.3, frameon=False,
+          bbox_to_anchor=(1.0, 1.0), borderaxespad=0.3, handletextpad=0.5,
+          labelspacing=0.32)
+
 ax.text(-24.5, 59.8, "29 mandate-sized plants,\none per country at its best site",
         fontsize=9.5, color=INK2, zorder=6)
-ax.text(-9.0, 12.0, "3 export systems sized to half of\nEU demand, shipped on routed lanes",
+ax.text(-25.5, 12.0, "3 export systems sized to half of\nEU demand, shipped on routed lanes",
         fontsize=9.5, color=INK2, zorder=6)
 
 ax.set_xlim(-26, 62); ax.set_ylim(9, 65)
