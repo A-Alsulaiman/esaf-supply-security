@@ -1,0 +1,30 @@
+country,airport_iata,import_port,port_country,port_lat,port_lon,port_oil_depth_m,gc_km_port_to_airport,road_km_port_to_airport,foreign_port,port_screen
+AUT,VIE,Trieste,Italy,45.651,13.746,15.5,347.6,469.2,True,energy
+BEL,BRU,Zeebrugge,Belgium,51.333333,3.2,12.5,101.7,137.3,False,energy
+BGR,SOF,Varna,Bulgaria,43.183333,27.966667,6.4,375.1,506.4,False,energy
+HRV,ZAG,Bakar,Croatia,45.3,14.533333,9.4,129.4,174.6,False,energy
+CYP,LCA,Larnaca,Cyprus,34.916667,33.65,12.5,5.2,7.0,False,energy
+CZE,PRG,Szczecin,Poland,53.416667,14.55,4.9,369.2,498.5,True,energy
+DNK,CPH,Kobenhavn,Denmark,55.7,12.616667,4.9,9.4,12.7,False,energy
+EST,TLL,Vanasadam - Port of Tallinn,Estonia,59.450128,24.766676,0.0,5.5,7.5,False,energy
+FIN,HEL,Helsinki,Finland,60.166667,24.966667,9.4,16.7,22.6,False,energy
+FRA,CDG,Port Of Rouen,France,49.45,1.066667,11.0,118.2,159.5,False,energy
+DEU,FRA,Emden,Germany,53.333333,7.183333,9.4,378.5,511.0,False,energy
+GRC,ATH,Piraievs,Greece,37.933333,23.65,11.0,26.1,35.2,False,energy
+HUN,BUD,Bakar,Croatia,45.3,14.533333,9.4,433.2,584.8,True,energy
+IRL,DUB,Dublin,Ireland,53.35,-6.25,9.8,8.0,10.9,False,energy
+ITA,FCO,Civitavecchia,Italy,42.102,11.771,23.2,51.2,69.1,False,energy
+LVA,RIX,Riga,Latvia,56.95,24.1,6.4,8.4,11.3,False,energy
+LTU,VNO,Klaipeda,Lithuania,55.716667,21.116667,12.5,290.8,392.5,False,energy
+LUX,LUX,Vlissingen,Netherlands,51.45,3.6,9.4,274.1,370.1,True,energy
+MLT,MLA,Valletta Harbors,Malta,35.9,14.516667,0.0,5.9,8.0,False,relaxed
+NLD,AMS,Rotterdam,Netherlands,51.9,4.483333,12.5,49.6,67.0,False,energy
+POL,WAW,Gdansk,Poland,54.35,18.666667,9.4,287.0,387.5,False,energy
+PRT,LIS,Sines,Portugal,37.95,-8.866667,21.6,94.6,127.7,False,energy
+ROU,OTP,Constanta,Romania,44.166667,28.65,12.5,208.8,281.8,False,energy
+SVK,BTS,Bakar,Croatia,45.3,14.533333,9.4,378.8,511.4,True,energy
+SVN,LJU,Koper,Slovenia,45.55,13.733333,0.0,93.6,126.3,False,relaxed
+ESP,MAD,El Grao,Spain,39.966667,0.016667,21.6,308.9,417.0,False,energy
+SWE,ARN,Stockholm,Sweden,59.333333,18.05,4.9,36.2,48.9,False,energy
+GBR,LHR,London,United Kingdom,51.5,-0.0833329999999,9.4,25.9,35.0,False,energy
+CHE,ZRH,Genova,Italy,44.398,8.922,23.2,341.5,461.0,True,energy

@@ -1,0 +1,325 @@
+exporter,export_port,import_port,scenario,distance_nm,uses_suez,uses_panama
+SAU,King Fahd Port,Trieste,all_canals,2235.5630744120695,True,False
+SAU,King Fahd Port,Trieste,avoid_suez,11778.59492767714,False,False
+SAU,King Fahd Port,Trieste,avoid_panama,2235.5630744120695,True,False
+SAU,King Fahd Port,Trieste,avoid_suez_and_panama,11778.59492767714,False,False
+SAU,King Fahd Port,Zeebrugge,all_canals,3934.319854711368,True,False
+SAU,King Fahd Port,Zeebrugge,avoid_suez,11495.87623669587,False,False
+SAU,King Fahd Port,Zeebrugge,avoid_panama,3934.319854711368,True,False
+SAU,King Fahd Port,Zeebrugge,avoid_suez_and_panama,11495.87623669587,False,False
+SAU,King Fahd Port,Varna,all_canals,1471.7323043428185,True,False
+SAU,King Fahd Port,Varna,avoid_suez,12395.351426044828,False,False
+SAU,King Fahd Port,Varna,avoid_panama,1471.7323043428185,True,False
+SAU,King Fahd Port,Varna,avoid_suez_and_panama,12395.351426044828,False,False
+SAU,King Fahd Port,Bakar,all_canals,2152.470249753198,True,False
+SAU,King Fahd Port,Bakar,avoid_suez,11768.647461622413,False,False
+SAU,King Fahd Port,Bakar,avoid_panama,2152.470249753198,True,False
+SAU,King Fahd Port,Bakar,avoid_suez_and_panama,11768.647461622413,False,False
+SAU,King Fahd Port,Larnaca,all_canals,859.5886814119604,True,False
+SAU,King Fahd Port,Larnaca,avoid_suez,12459.133480740298,False,False
+SAU,King Fahd Port,Larnaca,avoid_panama,859.5886814119604,True,False
+SAU,King Fahd Port,Larnaca,avoid_suez_and_panama,12459.133480740298,False,False
+SAU,King Fahd Port,Szczecin,all_canals,4741.562290491142,True,False
+SAU,King Fahd Port,Szczecin,avoid_suez,12303.118672475644,False,False
+SAU,King Fahd Port,Szczecin,avoid_panama,4741.562290491142,True,False
+SAU,King Fahd Port,Szczecin,avoid_suez_and_panama,12303.118672475644,False,False
+SAU,King Fahd Port,Kobenhavn,all_canals,4611.283941334673,True,False
+SAU,King Fahd Port,Kobenhavn,avoid_suez,12172.840323319177,False,False
+SAU,King Fahd Port,Kobenhavn,avoid_panama,4611.283941334673,True,False
+SAU,King Fahd Port,Kobenhavn,avoid_suez_and_panama,12172.840323319177,False,False
+SAU,King Fahd Port,Vanasadam - Port of Tallinn,all_canals,5142.224105341879,True,False
+SAU,King Fahd Port,Vanasadam - Port of Tallinn,avoid_suez,12703.780487326381,False,False
+SAU,King Fahd Port,Vanasadam - Port of Tallinn,avoid_panama,5142.224105341879,True,False
+SAU,King Fahd Port,Vanasadam - Port of Tallinn,avoid_suez_and_panama,12703.780487326381,False,False
+SAU,King Fahd Port,Helsinki,all_canals,5191.933452026551,True,False
+SAU,King Fahd Port,Helsinki,avoid_suez,12753.48983401105,False,False
+SAU,King Fahd Port,Helsinki,avoid_panama,5191.933452026551,True,False
+SAU,King Fahd Port,Helsinki,avoid_suez_and_panama,12753.48983401105,False,False
+SAU,King Fahd Port,Port Of Rouen,all_canals,3912.974073373667,True,False
+SAU,King Fahd Port,Port Of Rouen,avoid_suez,11474.53045535816,False,False
+SAU,King Fahd Port,Port Of Rouen,avoid_panama,3912.974073373667,True,False
+SAU,King Fahd Port,Port Of Rouen,avoid_suez_and_panama,11474.53045535816,False,False
+SAU,King Fahd Port,Emden,all_canals,4157.75411341991,True,False
+SAU,King Fahd Port,Emden,avoid_suez,11719.310495404412,False,False
+SAU,King Fahd Port,Emden,avoid_panama,4157.75411341991,True,False
+SAU,King Fahd Port,Emden,avoid_suez_and_panama,11719.310495404412,False,False
+SAU,King Fahd Port,Piraievs,all_canals,1229.8164402550562,True,False
+SAU,King Fahd Port,Piraievs,avoid_suez,11996.989112112986,False,False
+SAU,King Fahd Port,Piraievs,avoid_panama,1229.8164402550562,True,False
+SAU,King Fahd Port,Piraievs,avoid_suez_and_panama,11996.989112112986,False,False
+SAU,King Fahd Port,Dublin,all_canals,3858.2583715527994,True,False
+SAU,King Fahd Port,Dublin,avoid_suez,11419.814753537303,False,False
+SAU,King Fahd Port,Dublin,avoid_panama,3858.2583715527994,True,False
+SAU,King Fahd Port,Dublin,avoid_suez_and_panama,11419.814753537303,False,False
+SAU,King Fahd Port,Civitavecchia,all_canals,2059.711142006103,True,False
+SAU,King Fahd Port,Civitavecchia,avoid_suez,11503.432920161273,False,False
+SAU,King Fahd Port,Civitavecchia,avoid_panama,2059.711142006103,True,False
+SAU,King Fahd Port,Civitavecchia,avoid_suez_and_panama,11503.432920161273,False,False
+SAU,King Fahd Port,Riga,all_canals,5149.152176337558,True,False
+SAU,King Fahd Port,Riga,avoid_suez,12710.70855832206,False,False
+SAU,King Fahd Port,Riga,avoid_panama,5149.152176337558,True,False
+SAU,King Fahd Port,Riga,avoid_suez_and_panama,12710.70855832206,False,False
+SAU,King Fahd Port,Klaipeda,all_canals,4936.711785594445,True,False
+SAU,King Fahd Port,Klaipeda,avoid_suez,12498.268167578943,False,False
+SAU,King Fahd Port,Klaipeda,avoid_panama,4936.711785594445,True,False
+SAU,King Fahd Port,Klaipeda,avoid_suez_and_panama,12498.268167578943,False,False
+SAU,King Fahd Port,Vlissingen,all_canals,3950.8180298441303,True,False
+SAU,King Fahd Port,Vlissingen,avoid_suez,11512.374411828632,False,False
+SAU,King Fahd Port,Vlissingen,avoid_panama,3950.8180298441303,True,False
+SAU,King Fahd Port,Vlissingen,avoid_suez_and_panama,11512.374411828632,False,False
+SAU,King Fahd Port,Valletta Harbors,all_canals,1587.3723292608324,True,False
+SAU,King Fahd Port,Valletta Harbors,avoid_suez,11472.39976644803,False,False
+SAU,King Fahd Port,Valletta Harbors,avoid_panama,1587.3723292608324,True,False
+SAU,King Fahd Port,Valletta Harbors,avoid_suez_and_panama,11472.39976644803,False,False
+SAU,King Fahd Port,Rotterdam,all_canals,4074.4896547656294,True,False
+SAU,King Fahd Port,Rotterdam,avoid_suez,11636.046036750133,False,False
+SAU,King Fahd Port,Rotterdam,avoid_panama,4074.4896547656294,True,False
+SAU,King Fahd Port,Rotterdam,avoid_suez_and_panama,11636.046036750133,False,False
+SAU,King Fahd Port,Gdansk,all_canals,4854.087862545457,True,False
+SAU,King Fahd Port,Gdansk,avoid_suez,12415.64424452996,False,False
+SAU,King Fahd Port,Gdansk,avoid_panama,4854.087862545457,True,False
+SAU,King Fahd Port,Gdansk,avoid_suez_and_panama,12415.64424452996,False,False
+SAU,King Fahd Port,Sines,all_canals,2863.226763552382,True,False
+SAU,King Fahd Port,Sines,avoid_suez,10622.878046276477,False,False
+SAU,King Fahd Port,Sines,avoid_panama,2863.226763552382,True,False
+SAU,King Fahd Port,Sines,avoid_suez_and_panama,10622.878046276477,False,False
+SAU,King Fahd Port,Constanta,all_canals,1537.6084753895868,True,False
+SAU,King Fahd Port,Constanta,avoid_suez,12461.227597091596,False,False
+SAU,King Fahd Port,Constanta,avoid_panama,1537.6084753895868,True,False
+SAU,King Fahd Port,Constanta,avoid_suez_and_panama,12461.227597091596,False,False
+SAU,King Fahd Port,Koper,all_canals,2229.5832350347387,True,False
+SAU,King Fahd Port,Koper,avoid_suez,11772.60762218203,False,False
+SAU,King Fahd Port,Koper,avoid_panama,2229.5832350347387,True,False
+SAU,King Fahd Port,Koper,avoid_suez_and_panama,11772.60762218203,False,False
+SAU,King Fahd Port,El Grao,all_canals,2408.8854723592185,True,False
+SAU,King Fahd Port,El Grao,avoid_suez,10855.788703952972,False,False
+SAU,King Fahd Port,El Grao,avoid_panama,2408.8854723592185,True,False
+SAU,King Fahd Port,El Grao,avoid_suez_and_panama,10855.788703952972,False,False
+SAU,King Fahd Port,Stockholm,all_canals,5043.036665176307,True,False
+SAU,King Fahd Port,Stockholm,avoid_suez,12604.593047160808,False,False
+SAU,King Fahd Port,Stockholm,avoid_panama,5043.036665176307,True,False
+SAU,King Fahd Port,Stockholm,avoid_suez_and_panama,12604.593047160808,False,False
+SAU,King Fahd Port,London,all_canals,3896.1852904959733,True,False
+SAU,King Fahd Port,London,avoid_suez,11457.741672480475,False,False
+SAU,King Fahd Port,London,avoid_panama,3896.1852904959733,True,False
+SAU,King Fahd Port,London,avoid_suez_and_panama,11457.741672480475,False,False
+SAU,King Fahd Port,Genova,all_canals,2276.180070003355,True,False
+SAU,King Fahd Port,Genova,avoid_suez,11541.993509181015,False,False
+SAU,King Fahd Port,Genova,avoid_panama,2276.180070003355,True,False
+SAU,King Fahd Port,Genova,avoid_suez_and_panama,11541.993509181015,False,False
+ARE,Mina Jabal Ali,Trieste,all_canals,4605.479547369241,True,False
+ARE,Mina Jabal Ali,Trieste,avoid_suez,11454.058411219614,False,False
+ARE,Mina Jabal Ali,Trieste,avoid_panama,4605.479547369241,True,False
+ARE,Mina Jabal Ali,Trieste,avoid_suez_and_panama,11454.058411219614,False,False
+ARE,Mina Jabal Ali,Zeebrugge,all_canals,6304.236327668535,True,False
+ARE,Mina Jabal Ali,Zeebrugge,avoid_suez,11171.339720238344,False,False
+ARE,Mina Jabal Ali,Zeebrugge,avoid_panama,6304.236327668535,True,False
+ARE,Mina Jabal Ali,Zeebrugge,avoid_suez_and_panama,11171.339720238344,False,False
+ARE,Mina Jabal Ali,Varna,all_canals,3841.6487772999913,True,False
+ARE,Mina Jabal Ali,Varna,avoid_suez,12070.814909587301,False,False
+ARE,Mina Jabal Ali,Varna,avoid_panama,3841.6487772999913,True,False
+ARE,Mina Jabal Ali,Varna,avoid_suez_and_panama,12070.814909587301,False,False
+ARE,Mina Jabal Ali,Bakar,all_canals,4522.386722710371,True,False
+ARE,Mina Jabal Ali,Bakar,avoid_suez,11444.110945164886,False,False
+ARE,Mina Jabal Ali,Bakar,avoid_panama,4522.386722710371,True,False
+ARE,Mina Jabal Ali,Bakar,avoid_suez_and_panama,11444.110945164886,False,False
+ARE,Mina Jabal Ali,Larnaca,all_canals,3229.5051543691334,True,False
+ARE,Mina Jabal Ali,Larnaca,avoid_suez,12134.596964282771,False,False
+ARE,Mina Jabal Ali,Larnaca,avoid_panama,3229.5051543691334,True,False
+ARE,Mina Jabal Ali,Larnaca,avoid_suez_and_panama,12134.596964282771,False,False
+ARE,Mina Jabal Ali,Szczecin,all_canals,7111.478763448309,True,False
+ARE,Mina Jabal Ali,Szczecin,avoid_suez,11978.582156018118,False,False
+ARE,Mina Jabal Ali,Szczecin,avoid_panama,7111.478763448309,True,False
+ARE,Mina Jabal Ali,Szczecin,avoid_suez_and_panama,11978.582156018118,False,False
+ARE,Mina Jabal Ali,Kobenhavn,all_canals,6981.2004142918395,True,False
+ARE,Mina Jabal Ali,Kobenhavn,avoid_suez,11848.30380686165,False,False
+ARE,Mina Jabal Ali,Kobenhavn,avoid_panama,6981.2004142918395,True,False
+ARE,Mina Jabal Ali,Kobenhavn,avoid_suez_and_panama,11848.30380686165,False,False
+ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,all_canals,7512.140578299046,True,False
+ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,avoid_suez,12379.243970868854,False,False
+ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,avoid_panama,7512.140578299046,True,False
+ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,avoid_suez_and_panama,12379.243970868854,False,False
+ARE,Mina Jabal Ali,Helsinki,all_canals,7561.849924983718,True,False
+ARE,Mina Jabal Ali,Helsinki,avoid_suez,12428.953317553523,False,False
+ARE,Mina Jabal Ali,Helsinki,avoid_panama,7561.849924983718,True,False
+ARE,Mina Jabal Ali,Helsinki,avoid_suez_and_panama,12428.953317553523,False,False
+ARE,Mina Jabal Ali,Port Of Rouen,all_canals,6282.890546330832,True,False
+ARE,Mina Jabal Ali,Port Of Rouen,avoid_suez,11149.993938900634,False,False
+ARE,Mina Jabal Ali,Port Of Rouen,avoid_panama,6282.890546330832,True,False
+ARE,Mina Jabal Ali,Port Of Rouen,avoid_suez_and_panama,11149.993938900634,False,False
+ARE,Mina Jabal Ali,Emden,all_canals,6527.670586377077,True,False
+ARE,Mina Jabal Ali,Emden,avoid_suez,11394.773978946885,False,False
+ARE,Mina Jabal Ali,Emden,avoid_panama,6527.670586377077,True,False
+ARE,Mina Jabal Ali,Emden,avoid_suez_and_panama,11394.773978946885,False,False
+ARE,Mina Jabal Ali,Piraievs,all_canals,3599.7329132122286,True,False
+ARE,Mina Jabal Ali,Piraievs,avoid_suez,11672.452595655459,False,False
+ARE,Mina Jabal Ali,Piraievs,avoid_panama,3599.7329132122286,True,False
+ARE,Mina Jabal Ali,Piraievs,avoid_suez_and_panama,11672.452595655459,False,False
+ARE,Mina Jabal Ali,Dublin,all_canals,6228.174844509965,True,False
+ARE,Mina Jabal Ali,Dublin,avoid_suez,11095.278237079776,False,False
+ARE,Mina Jabal Ali,Dublin,avoid_panama,6228.174844509965,True,False
+ARE,Mina Jabal Ali,Dublin,avoid_suez_and_panama,11095.278237079776,False,False
+ARE,Mina Jabal Ali,Civitavecchia,all_canals,4429.627614963275,True,False
+ARE,Mina Jabal Ali,Civitavecchia,avoid_suez,11178.896403703746,False,False
+ARE,Mina Jabal Ali,Civitavecchia,avoid_panama,4429.627614963275,True,False
+ARE,Mina Jabal Ali,Civitavecchia,avoid_suez_and_panama,11178.896403703746,False,False
+ARE,Mina Jabal Ali,Riga,all_canals,7519.068649294724,True,False
+ARE,Mina Jabal Ali,Riga,avoid_suez,12386.172041864533,False,False
+ARE,Mina Jabal Ali,Riga,avoid_panama,7519.068649294724,True,False
+ARE,Mina Jabal Ali,Riga,avoid_suez_and_panama,12386.172041864533,False,False
+ARE,Mina Jabal Ali,Klaipeda,all_canals,7306.628258551612,True,False
+ARE,Mina Jabal Ali,Klaipeda,avoid_suez,12173.731651121416,False,False
+ARE,Mina Jabal Ali,Klaipeda,avoid_panama,7306.628258551612,True,False
+ARE,Mina Jabal Ali,Klaipeda,avoid_suez_and_panama,12173.731651121416,False,False
+ARE,Mina Jabal Ali,Vlissingen,all_canals,6320.734502801297,True,False
+ARE,Mina Jabal Ali,Vlissingen,avoid_suez,11187.837895371105,False,False
+ARE,Mina Jabal Ali,Vlissingen,avoid_panama,6320.734502801297,True,False
+ARE,Mina Jabal Ali,Vlissingen,avoid_suez_and_panama,11187.837895371105,False,False
+ARE,Mina Jabal Ali,Valletta Harbors,all_canals,3957.288802218006,True,False
+ARE,Mina Jabal Ali,Valletta Harbors,avoid_suez,11147.863249990503,False,False
+ARE,Mina Jabal Ali,Valletta Harbors,avoid_panama,3957.288802218006,True,False
+ARE,Mina Jabal Ali,Valletta Harbors,avoid_suez_and_panama,11147.863249990503,False,False
+ARE,Mina Jabal Ali,Rotterdam,all_canals,6444.406127722795,True,False
+ARE,Mina Jabal Ali,Rotterdam,avoid_suez,11311.509520292606,False,False
+ARE,Mina Jabal Ali,Rotterdam,avoid_panama,6444.406127722795,True,False
+ARE,Mina Jabal Ali,Rotterdam,avoid_suez_and_panama,11311.509520292606,False,False
+ARE,Mina Jabal Ali,Gdansk,all_canals,7224.004335502624,True,False
+ARE,Mina Jabal Ali,Gdansk,avoid_suez,12091.107728072433,False,False
+ARE,Mina Jabal Ali,Gdansk,avoid_panama,7224.004335502624,True,False
+ARE,Mina Jabal Ali,Gdansk,avoid_suez_and_panama,12091.107728072433,False,False
+ARE,Mina Jabal Ali,Sines,all_canals,5233.143236509555,True,False
+ARE,Mina Jabal Ali,Sines,avoid_suez,10298.34152981895,False,False
+ARE,Mina Jabal Ali,Sines,avoid_panama,5233.143236509555,True,False
+ARE,Mina Jabal Ali,Sines,avoid_suez_and_panama,10298.34152981895,False,False
+ARE,Mina Jabal Ali,Constanta,all_canals,3907.5249483467596,True,False
+ARE,Mina Jabal Ali,Constanta,avoid_suez,12136.69108063407,False,False
+ARE,Mina Jabal Ali,Constanta,avoid_panama,3907.5249483467596,True,False
+ARE,Mina Jabal Ali,Constanta,avoid_suez_and_panama,12136.69108063407,False,False
+ARE,Mina Jabal Ali,Koper,all_canals,4599.49970799191,True,False
+ARE,Mina Jabal Ali,Koper,avoid_suez,11448.071105724503,False,False
+ARE,Mina Jabal Ali,Koper,avoid_panama,4599.49970799191,True,False
+ARE,Mina Jabal Ali,Koper,avoid_suez_and_panama,11448.071105724503,False,False
+ARE,Mina Jabal Ali,El Grao,all_canals,4778.801945316396,True,False
+ARE,Mina Jabal Ali,El Grao,avoid_suez,10531.252187495445,False,False
+ARE,Mina Jabal Ali,El Grao,avoid_panama,4778.801945316396,True,False
+ARE,Mina Jabal Ali,El Grao,avoid_suez_and_panama,10531.252187495445,False,False
+ARE,Mina Jabal Ali,Stockholm,all_canals,7412.953138133474,True,False
+ARE,Mina Jabal Ali,Stockholm,avoid_suez,12280.056530703281,False,False
+ARE,Mina Jabal Ali,Stockholm,avoid_panama,7412.953138133474,True,False
+ARE,Mina Jabal Ali,Stockholm,avoid_suez_and_panama,12280.056530703281,False,False
+ARE,Mina Jabal Ali,London,all_canals,6266.10176345314,True,False
+ARE,Mina Jabal Ali,London,avoid_suez,11133.205156022948,False,False
+ARE,Mina Jabal Ali,London,avoid_panama,6266.10176345314,True,False
+ARE,Mina Jabal Ali,London,avoid_suez_and_panama,11133.205156022948,False,False
+ARE,Mina Jabal Ali,Genova,all_canals,4646.096542960525,True,False
+ARE,Mina Jabal Ali,Genova,avoid_suez,11217.456992723488,False,False
+ARE,Mina Jabal Ali,Genova,avoid_panama,4646.096542960525,True,False
+ARE,Mina Jabal Ali,Genova,avoid_suez_and_panama,11217.456992723488,False,False
+MAR,Ad Dakhla,Trieste,all_canals,2269.8955308660543,False,False
+MAR,Ad Dakhla,Trieste,avoid_suez,2269.8955308660543,False,False
+MAR,Ad Dakhla,Trieste,avoid_panama,2269.8955308660543,False,False
+MAR,Ad Dakhla,Trieste,avoid_suez_and_panama,2269.8955308660543,False,False
+MAR,Ad Dakhla,Zeebrugge,all_canals,1995.4169898810324,False,False
+MAR,Ad Dakhla,Zeebrugge,avoid_suez,1995.4169898810324,False,False
+MAR,Ad Dakhla,Zeebrugge,avoid_panama,1995.4169898810324,False,False
+MAR,Ad Dakhla,Zeebrugge,avoid_suez_and_panama,1995.4169898810324,False,False
+MAR,Ad Dakhla,Varna,all_canals,2886.6520292337423,False,False
+MAR,Ad Dakhla,Varna,avoid_suez,2886.6520292337423,False,False
+MAR,Ad Dakhla,Varna,avoid_panama,2886.6520292337423,False,False
+MAR,Ad Dakhla,Varna,avoid_suez_and_panama,2886.6520292337423,False,False
+MAR,Ad Dakhla,Bakar,all_canals,2259.9480648113263,False,False
+MAR,Ad Dakhla,Bakar,avoid_suez,2259.9480648113263,False,False
+MAR,Ad Dakhla,Bakar,avoid_panama,2259.9480648113263,False,False
+MAR,Ad Dakhla,Bakar,avoid_suez_and_panama,2259.9480648113263,False,False
+MAR,Ad Dakhla,Larnaca,all_canals,2950.434083929207,False,False
+MAR,Ad Dakhla,Larnaca,avoid_suez,2950.434083929207,False,False
+MAR,Ad Dakhla,Larnaca,avoid_panama,2950.434083929207,False,False
+MAR,Ad Dakhla,Larnaca,avoid_suez_and_panama,2950.434083929207,False,False
+MAR,Ad Dakhla,Szczecin,all_canals,2802.6594256608073,False,False
+MAR,Ad Dakhla,Szczecin,avoid_suez,2802.6594256608073,False,False
+MAR,Ad Dakhla,Szczecin,avoid_panama,2802.6594256608073,False,False
+MAR,Ad Dakhla,Szczecin,avoid_suez_and_panama,2802.6594256608073,False,False
+MAR,Ad Dakhla,Kobenhavn,all_canals,2672.381076504338,False,False
+MAR,Ad Dakhla,Kobenhavn,avoid_suez,2672.381076504338,False,False
+MAR,Ad Dakhla,Kobenhavn,avoid_panama,2672.381076504338,False,False
+MAR,Ad Dakhla,Kobenhavn,avoid_suez_and_panama,2672.381076504338,False,False
+MAR,Ad Dakhla,Vanasadam - Port of Tallinn,all_canals,3203.3212405115437,False,False
+MAR,Ad Dakhla,Vanasadam - Port of Tallinn,avoid_suez,3203.3212405115437,False,False
+MAR,Ad Dakhla,Vanasadam - Port of Tallinn,avoid_panama,3203.3212405115437,False,False
+MAR,Ad Dakhla,Vanasadam - Port of Tallinn,avoid_suez_and_panama,3203.3212405115437,False,False
+MAR,Ad Dakhla,Helsinki,all_canals,3253.0305871962146,False,False
+MAR,Ad Dakhla,Helsinki,avoid_suez,3253.0305871962146,False,False
+MAR,Ad Dakhla,Helsinki,avoid_panama,3253.0305871962146,False,False
+MAR,Ad Dakhla,Helsinki,avoid_suez_and_panama,3253.0305871962146,False,False
+MAR,Ad Dakhla,Port Of Rouen,all_canals,1974.0712085433304,False,False
+MAR,Ad Dakhla,Port Of Rouen,avoid_suez,1974.0712085433304,False,False
+MAR,Ad Dakhla,Port Of Rouen,avoid_panama,1974.0712085433304,False,False
+MAR,Ad Dakhla,Port Of Rouen,avoid_suez_and_panama,1974.0712085433304,False,False
+MAR,Ad Dakhla,Emden,all_canals,2218.8512485895744,False,False
+MAR,Ad Dakhla,Emden,avoid_suez,2218.8512485895744,False,False
+MAR,Ad Dakhla,Emden,avoid_panama,2218.8512485895744,False,False
+MAR,Ad Dakhla,Emden,avoid_suez_and_panama,2218.8512485895744,False,False
+MAR,Ad Dakhla,Piraievs,all_canals,2488.2897153019003,False,False
+MAR,Ad Dakhla,Piraievs,avoid_suez,2488.2897153019003,False,False
+MAR,Ad Dakhla,Piraievs,avoid_panama,2488.2897153019003,False,False
+MAR,Ad Dakhla,Piraievs,avoid_suez_and_panama,2488.2897153019003,False,False
+MAR,Ad Dakhla,Dublin,all_canals,1919.3555067224625,False,False
+MAR,Ad Dakhla,Dublin,avoid_suez,1919.3555067224625,False,False
+MAR,Ad Dakhla,Dublin,avoid_panama,1919.3555067224625,False,False
+MAR,Ad Dakhla,Dublin,avoid_suez_and_panama,1919.3555067224625,False,False
+MAR,Ad Dakhla,Civitavecchia,all_canals,1994.7335233501867,False,False
+MAR,Ad Dakhla,Civitavecchia,avoid_suez,1994.7335233501867,False,False
+MAR,Ad Dakhla,Civitavecchia,avoid_panama,1994.7335233501867,False,False
+MAR,Ad Dakhla,Civitavecchia,avoid_suez_and_panama,1994.7335233501867,False,False
+MAR,Ad Dakhla,Riga,all_canals,3210.2493115072225,False,False
+MAR,Ad Dakhla,Riga,avoid_suez,3210.2493115072225,False,False
+MAR,Ad Dakhla,Riga,avoid_panama,3210.2493115072225,False,False
+MAR,Ad Dakhla,Riga,avoid_suez_and_panama,3210.2493115072225,False,False
+MAR,Ad Dakhla,Klaipeda,all_canals,2997.808920764107,False,False
+MAR,Ad Dakhla,Klaipeda,avoid_suez,2997.808920764107,False,False
+MAR,Ad Dakhla,Klaipeda,avoid_panama,2997.808920764107,False,False
+MAR,Ad Dakhla,Klaipeda,avoid_suez_and_panama,2997.808920764107,False,False
+MAR,Ad Dakhla,Vlissingen,all_canals,2011.9151650137946,False,False
+MAR,Ad Dakhla,Vlissingen,avoid_suez,2011.9151650137946,False,False
+MAR,Ad Dakhla,Vlissingen,avoid_panama,2011.9151650137946,False,False
+MAR,Ad Dakhla,Vlissingen,avoid_suez_and_panama,2011.9151650137946,False,False
+MAR,Ad Dakhla,Valletta Harbors,all_canals,1963.7003696369422,False,False
+MAR,Ad Dakhla,Valletta Harbors,avoid_suez,1963.7003696369422,False,False
+MAR,Ad Dakhla,Valletta Harbors,avoid_panama,1963.7003696369422,False,False
+MAR,Ad Dakhla,Valletta Harbors,avoid_suez_and_panama,1963.7003696369422,False,False
+MAR,Ad Dakhla,Rotterdam,all_canals,2135.5867899352925,False,False
+MAR,Ad Dakhla,Rotterdam,avoid_suez,2135.5867899352925,False,False
+MAR,Ad Dakhla,Rotterdam,avoid_panama,2135.5867899352925,False,False
+MAR,Ad Dakhla,Rotterdam,avoid_suez_and_panama,2135.5867899352925,False,False
+MAR,Ad Dakhla,Gdansk,all_canals,2915.1849977151214,False,False
+MAR,Ad Dakhla,Gdansk,avoid_suez,2915.1849977151214,False,False
+MAR,Ad Dakhla,Gdansk,avoid_panama,2915.1849977151214,False,False
+MAR,Ad Dakhla,Gdansk,avoid_suez_and_panama,2915.1849977151214,False,False
+MAR,Ad Dakhla,Sines,all_canals,1114.1786494653938,False,False
+MAR,Ad Dakhla,Sines,avoid_suez,1114.1786494653938,False,False
+MAR,Ad Dakhla,Sines,avoid_panama,1114.1786494653938,False,False
+MAR,Ad Dakhla,Sines,avoid_suez_and_panama,1114.1786494653938,False,False
+MAR,Ad Dakhla,Constanta,all_canals,2952.5282002805106,False,False
+MAR,Ad Dakhla,Constanta,avoid_suez,2952.5282002805106,False,False
+MAR,Ad Dakhla,Constanta,avoid_panama,2952.5282002805106,False,False
+MAR,Ad Dakhla,Constanta,avoid_suez_and_panama,2952.5282002805106,False,False
+MAR,Ad Dakhla,Koper,all_canals,2263.908225370943,False,False
+MAR,Ad Dakhla,Koper,avoid_suez,2263.908225370943,False,False
+MAR,Ad Dakhla,Koper,avoid_panama,2263.908225370943,False,False
+MAR,Ad Dakhla,Koper,avoid_suez_and_panama,2263.908225370943,False,False
+MAR,Ad Dakhla,El Grao,all_canals,1347.0893071418857,False,False
+MAR,Ad Dakhla,El Grao,avoid_suez,1347.0893071418857,False,False
+MAR,Ad Dakhla,El Grao,avoid_panama,1347.0893071418857,False,False
+MAR,Ad Dakhla,El Grao,avoid_suez_and_panama,1347.0893071418857,False,False
+MAR,Ad Dakhla,Stockholm,all_canals,3104.133800345972,False,False
+MAR,Ad Dakhla,Stockholm,avoid_suez,3104.133800345972,False,False
+MAR,Ad Dakhla,Stockholm,avoid_panama,3104.133800345972,False,False
+MAR,Ad Dakhla,Stockholm,avoid_suez_and_panama,3104.133800345972,False,False
+MAR,Ad Dakhla,London,all_canals,1957.2824256656372,False,False
+MAR,Ad Dakhla,London,avoid_suez,1957.2824256656372,False,False
+MAR,Ad Dakhla,London,avoid_panama,1957.2824256656372,False,False
+MAR,Ad Dakhla,London,avoid_suez_and_panama,1957.2824256656372,False,False
+MAR,Ad Dakhla,Genova,all_canals,2033.2941123699281,False,False
+MAR,Ad Dakhla,Genova,avoid_suez,2033.2941123699281,False,False
+MAR,Ad Dakhla,Genova,avoid_panama,2033.2941123699281,False,False
+MAR,Ad Dakhla,Genova,avoid_suez_and_panama,2033.2941123699281,False,False

@@ -1,0 +1,59 @@
+country,year,exporter,export_port,import_port,route_scenario,distance_nm,uses_suez,vessel,production_usd_t,shipping_usd_t,ship_co2_kg_t,ets_usd_t,import_port_handling_usd_t,inland_usd_t,airport_fee_usd_t,import_delivered_usd_t,domestic_usd_t,import_vs_domestic_pct
+AUT,2030,ARE,Mina Jabal Ali,Trieste,all_canals,4605.0,True,MR,6982.1,50.5,41.4,2.92,5.0,43.2,5.412,7089.1,7594.9,-6.7
+AUT,2050,ARE,Mina Jabal Ali,Trieste,all_canals,4605.0,True,LR2,2979.1,22.1,23.0,3.12,5.0,43.2,5.412,3057.9,3533.2,-13.5
+BEL,2030,ARE,Mina Jabal Ali,Zeebrugge,all_canals,6304.0,True,MR,6982.1,60.8,56.7,4.0,5.0,12.6,5.412,7069.9,7075.1,-0.1
+BEL,2050,ARE,Mina Jabal Ali,Zeebrugge,all_canals,6304.0,True,LR2,2979.1,27.0,31.5,4.27,5.0,12.6,5.412,3033.5,3326.3,-8.8
+BGR,2030,ARE,Mina Jabal Ali,Varna,all_canals,3842.0,True,MR,6982.1,45.9,34.6,2.44,5.0,46.6,5.412,7087.4,13007.7,-45.5
+BGR,2050,ARE,Mina Jabal Ali,Varna,all_canals,3842.0,True,LR2,2979.1,19.9,19.2,2.6,5.0,46.6,5.412,3058.6,4998.6,-38.8
+CHE,2030,ARE,Mina Jabal Ali,Genova,all_canals,4646.0,True,MR,6982.1,50.7,41.8,2.95,5.0,42.4,5.412,7088.6,6969.2,1.7
+CHE,2050,ARE,Mina Jabal Ali,Genova,all_canals,4646.0,True,LR2,2979.1,22.2,23.2,3.15,5.0,42.4,5.412,3057.3,3165.7,-3.4
+CYP,2030,ARE,Mina Jabal Ali,Larnaca,all_canals,3230.0,True,MR,6982.1,42.2,29.1,2.05,5.0,0.6,5.412,7037.3,10956.1,-35.8
+CYP,2050,ARE,Mina Jabal Ali,Larnaca,all_canals,3230.0,True,LR2,2979.1,18.1,16.1,2.19,5.0,0.6,5.412,3010.5,3658.4,-17.7
+CZE,2030,ARE,Mina Jabal Ali,Szczecin,all_canals,7111.0,True,MR,6982.1,65.7,64.0,4.51,5.0,45.9,5.412,7108.5,8763.4,-18.9
+CZE,2050,ARE,Mina Jabal Ali,Szczecin,all_canals,7111.0,True,LR2,2979.1,29.4,35.6,4.82,5.0,45.9,5.412,3069.6,3891.3,-21.1
+DEU,2030,ARE,Mina Jabal Ali,Emden,all_canals,6528.0,True,MR,6982.1,62.2,58.7,4.14,5.0,47.0,5.412,7105.8,6060.8,17.2
+DEU,2050,ARE,Mina Jabal Ali,Emden,all_canals,6528.0,True,LR2,2979.1,27.7,32.6,4.42,5.0,47.0,5.412,3068.6,2989.9,2.6
+DNK,2030,ARE,Mina Jabal Ali,Kobenhavn,all_canals,6981.0,True,MR,6982.1,64.9,62.8,4.43,5.0,1.2,5.412,7063.0,6696.3,5.5
+DNK,2050,ARE,Mina Jabal Ali,Kobenhavn,all_canals,6981.0,True,LR2,2979.1,29.0,34.9,4.73,5.0,1.2,5.412,3024.4,3066.5,-1.4
+ESP,2030,ARE,Mina Jabal Ali,El Grao,all_canals,4779.0,True,MR,6982.1,51.5,43.0,3.03,5.0,38.4,5.412,7085.4,6196.3,14.3
+ESP,2050,ARE,Mina Jabal Ali,El Grao,all_canals,4779.0,True,LR2,2979.1,22.6,23.9,3.24,5.0,38.4,5.412,3053.7,2821.4,8.2
+EST,2030,ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,all_canals,7512.0,True,MR,6982.1,68.1,67.6,4.77,5.0,0.7,5.412,7066.0,21723.8,-67.5
+EST,2050,ARE,Mina Jabal Ali,Vanasadam - Port of Tallinn,all_canals,7512.0,True,LR2,2979.1,30.5,37.6,5.09,5.0,0.7,5.412,3025.8,5273.2,-42.6
+FIN,2030,ARE,Mina Jabal Ali,Helsinki,all_canals,7562.0,True,MR,6982.1,68.4,68.1,4.8,5.0,2.1,5.412,7067.8,7199.3,-1.8
+FIN,2050,ARE,Mina Jabal Ali,Helsinki,all_canals,7562.0,True,LR2,2979.1,30.7,37.8,5.12,5.0,2.1,5.412,3027.4,3206.6,-5.6
+FRA,2030,ARE,Mina Jabal Ali,Port Of Rouen,all_canals,6283.0,True,MR,6982.1,60.7,56.5,3.99,5.0,14.7,5.412,7071.8,5898.0,19.9
+FRA,2050,ARE,Mina Jabal Ali,Port Of Rouen,all_canals,6283.0,True,LR2,2979.1,27.0,31.4,4.26,5.0,14.7,5.412,3035.4,2875.7,5.6
+GBR,2030,ARE,Mina Jabal Ali,London,all_canals,6266.0,True,MR,6982.1,60.6,56.4,3.98,5.0,3.2,5.412,7060.2,6390.2,10.5
+GBR,2050,ARE,Mina Jabal Ali,London,all_canals,6266.0,True,LR2,2979.1,26.9,31.3,4.25,5.0,3.2,5.412,3023.9,3373.4,-10.4
+GRC,2030,ARE,Mina Jabal Ali,Piraievs,all_canals,3600.0,True,MR,6982.1,44.4,32.4,2.28,5.0,3.2,5.412,7042.4,7980.2,-11.8
+GRC,2050,ARE,Mina Jabal Ali,Piraievs,all_canals,3600.0,True,LR2,2979.1,19.2,18.0,2.44,5.0,3.2,5.412,3014.4,3198.9,-5.8
+HRV,2030,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,MR,6982.1,50.0,40.7,2.87,5.0,16.1,5.412,7061.4,17261.4,-59.1
+HRV,2050,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,LR2,2979.1,21.8,22.6,3.06,5.0,16.1,5.412,3030.5,5166.1,-41.3
+HUN,2030,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,MR,6982.1,50.0,40.7,2.87,5.0,53.8,5.412,7099.1,8931.8,-20.5
+HUN,2050,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,LR2,2979.1,21.8,22.6,3.06,5.0,53.8,5.412,3068.2,3825.3,-19.8
+IRL,2030,ARE,Mina Jabal Ali,Dublin,all_canals,6228.0,True,MR,6982.1,60.3,56.1,3.95,5.0,1.0,5.412,7057.8,7723.5,-8.6
+IRL,2050,ARE,Mina Jabal Ali,Dublin,all_canals,6228.0,True,LR2,2979.1,26.8,31.1,4.22,5.0,1.0,5.412,3021.6,3602.8,-16.1
+ITA,2030,ARE,Mina Jabal Ali,Civitavecchia,all_canals,4430.0,True,MR,6982.1,49.4,39.9,2.81,5.0,6.4,5.412,7051.1,6826.9,3.3
+ITA,2050,ARE,Mina Jabal Ali,Civitavecchia,all_canals,4430.0,True,LR2,2979.1,21.6,22.1,3.0,5.0,6.4,5.412,3020.5,3101.0,-2.6
+LTU,2030,ARE,Mina Jabal Ali,Klaipeda,all_canals,7307.0,True,MR,6982.1,66.9,65.8,4.64,5.0,36.1,5.412,7100.1,18088.8,-60.7
+LTU,2050,ARE,Mina Jabal Ali,Klaipeda,all_canals,7307.0,True,LR2,2979.1,29.9,36.5,4.95,5.0,36.1,5.412,3060.5,5641.0,-45.7
+LUX,2030,ARE,Mina Jabal Ali,Vlissingen,all_canals,6321.0,True,MR,6982.1,60.9,56.9,4.01,5.0,34.1,5.412,7091.4,7708.6,-8.0
+LUX,2050,ARE,Mina Jabal Ali,Vlissingen,all_canals,6321.0,True,LR2,2979.1,27.1,31.6,4.28,5.0,34.1,5.412,3054.9,3523.6,-13.3
+LVA,2030,ARE,Mina Jabal Ali,Riga,all_canals,7519.0,True,MR,6982.1,68.2,67.7,4.77,5.0,1.0,5.412,7066.4,14470.0,-51.2
+LVA,2050,ARE,Mina Jabal Ali,Riga,all_canals,7519.0,True,LR2,2979.1,30.5,37.6,5.09,5.0,1.0,5.412,3026.2,5378.0,-43.7
+MLT,2030,ARE,Mina Jabal Ali,Valletta Harbors,all_canals,3957.0,True,MR,6982.1,46.6,35.6,2.51,5.0,0.7,5.412,7042.3,12310.6,-42.8
+MLT,2050,ARE,Mina Jabal Ali,Valletta Harbors,all_canals,3957.0,True,LR2,2979.1,20.2,19.8,2.68,5.0,0.7,5.412,3013.2,3859.2,-21.9
+NLD,2030,ARE,Mina Jabal Ali,Rotterdam,all_canals,6444.0,True,MR,6982.1,61.7,58.0,4.09,5.0,6.2,5.412,7064.4,6524.4,8.3
+NLD,2050,ARE,Mina Jabal Ali,Rotterdam,all_canals,6444.0,True,LR2,2979.1,27.4,32.2,4.37,5.0,6.2,5.412,3027.5,3273.2,-7.5
+POL,2030,ARE,Mina Jabal Ali,Gdansk,all_canals,7224.0,True,MR,6982.1,66.4,65.0,4.58,5.0,35.7,5.412,7099.1,7587.9,-6.4
+POL,2050,ARE,Mina Jabal Ali,Gdansk,all_canals,7224.0,True,LR2,2979.1,29.7,36.1,4.89,5.0,35.7,5.412,3059.8,3418.0,-10.5
+PRT,2030,ARE,Mina Jabal Ali,Sines,all_canals,5233.0,True,MR,6982.1,54.3,47.1,3.32,5.0,11.7,5.412,7061.8,6616.1,6.7
+PRT,2050,ARE,Mina Jabal Ali,Sines,all_canals,5233.0,True,LR2,2979.1,23.9,26.2,3.55,5.0,11.7,5.412,3028.7,2974.3,1.8
+ROU,2030,ARE,Mina Jabal Ali,Constanta,all_canals,3908.0,True,MR,6982.1,46.3,35.2,2.48,5.0,25.9,5.412,7067.1,10019.0,-29.5
+ROU,2050,ARE,Mina Jabal Ali,Constanta,all_canals,3908.0,True,LR2,2979.1,20.1,19.5,2.65,5.0,25.9,5.412,3038.2,4263.4,-28.7
+SVK,2030,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,MR,6982.1,50.0,40.7,2.87,5.0,47.1,5.412,7092.4,35719.8,-80.1
+SVK,2050,ARE,Mina Jabal Ali,Bakar,all_canals,4522.0,True,LR2,2979.1,21.8,22.6,3.06,5.0,47.1,5.412,3061.5,5353.7,-42.8
+SVN,2030,ARE,Mina Jabal Ali,Koper,all_canals,4599.0,True,MR,6982.1,50.5,41.4,2.92,5.0,11.6,5.412,7057.5,48225.4,-85.4
+SVN,2050,ARE,Mina Jabal Ali,Koper,all_canals,4599.0,True,LR2,2979.1,22.1,23.0,3.12,5.0,11.6,5.412,3026.3,6394.4,-52.7
+SWE,2030,ARE,Mina Jabal Ali,Stockholm,all_canals,7413.0,True,MR,6982.1,67.5,66.7,4.7,5.0,4.5,5.412,7069.2,8046.6,-12.1
+SWE,2050,ARE,Mina Jabal Ali,Stockholm,all_canals,7413.0,True,LR2,2979.1,30.2,37.1,5.02,5.0,4.5,5.412,3029.3,3580.1,-15.4
