@@ -4,7 +4,8 @@ title: "eSAF Supply-Security Model"
 authors:
   - family-names: Alsulaiman
     given-names: Abdurahman
-    affiliation: "Oxford Institute for Energy Studies"
+    email: abdurahman.alsulaiman@epfl.ch
+    affiliation: "École Polytechnique Fédérale de Lausanne (EPFL), LEURE, and Oxford Institute for Energy Studies"
 version: "v8"
 date-released: "2026-08-25"
 repository-code: "https://github.com/A-Alsulaiman/esaf-supply-security"
@@ -15,6 +16,6 @@ preferred-citation:
   authors:
     - family-names: Alsulaiman
       given-names: Abdurahman
-      affiliation: "Oxford Institute for Energy Studies"
+      affiliation: "École Polytechnique Fédérale de Lausanne (EPFL), LEURE, and Oxford Institute for Energy Studies"
   year: 2026
   journal: "Energy Conversion and Management: X (under review)"
