@@ -1,0 +1,37 @@
+year,band,segment,class,esaf_usd_t,premium_usd_t,extra_usd_per_pax,ticket_increase_pct,net_of_ets_pct,note
+2030,central,Airline fuel bill,-,7066,6286,,9.7,,increase in the operator's total fuel cost
+2030,central,Uniform pass-through,-,7066,6286,,2.8,2.6,same % on every ticket if spread pro-rata over opex
+2030,central,Short haul,Economy,7066,6286,2.26,2.1,1.9,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2030,central,Short haul,Business,7066,6286,3.39,1.0,1.0,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2030,central,Long haul,Economy,7066,6286,13.73,3.1,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2030,central,Long haul,Business,7066,6286,39.81,1.8,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
+2030,p10,Airline fuel bill,-,6485,5705,,8.8,,increase in the operator's total fuel cost
+2030,p10,Uniform pass-through,-,6485,5705,,2.5,2.3,same % on every ticket if spread pro-rata over opex
+2030,p10,Short haul,Economy,6485,5705,2.05,1.9,1.7,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2030,p10,Short haul,Business,6485,5705,3.08,0.9,0.9,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2030,p10,Long haul,Economy,6485,5705,12.46,2.8,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2030,p10,Long haul,Business,6485,5705,36.13,1.6,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
+2030,p90,Airline fuel bill,-,7558,6778,,10.4,,increase in the operator's total fuel cost
+2030,p90,Uniform pass-through,-,7558,6778,,3.0,2.8,same % on every ticket if spread pro-rata over opex
+2030,p90,Short haul,Economy,7558,6778,2.44,2.2,2.1,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2030,p90,Short haul,Business,7558,6778,3.66,1.1,1.0,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2030,p90,Long haul,Economy,7558,6778,14.8,3.3,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2030,p90,Long haul,Business,7558,6778,42.93,2.0,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
+2050,central,Airline fuel bill,-,3124,2344,,105.2,,increase in the operator's total fuel cost
+2050,central,Uniform pass-through,-,3124,2344,,30.3,19.2,same % on every ticket if spread pro-rata over opex
+2050,central,Short haul,Economy,3124,2344,24.61,22.4,14.2,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2050,central,Short haul,Business,3124,2344,36.92,11.2,7.1,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2050,central,Long haul,Economy,3124,2344,149.33,33.2,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2050,central,Long haul,Business,3124,2344,433.04,19.7,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
+2050,p10,Airline fuel bill,-,2938,2158,,96.8,,increase in the operator's total fuel cost
+2050,p10,Uniform pass-through,-,2938,2158,,27.9,16.8,same % on every ticket if spread pro-rata over opex
+2050,p10,Short haul,Economy,2938,2158,22.65,20.6,12.4,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2050,p10,Short haul,Business,2938,2158,33.98,10.3,6.2,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2050,p10,Long haul,Economy,2938,2158,137.44,30.5,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2050,p10,Long haul,Business,2938,2158,398.57,18.1,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
+2050,p90,Airline fuel bill,-,3312,2532,,113.6,,increase in the operator's total fuel cost
+2050,p90,Uniform pass-through,-,3312,2532,,32.7,21.7,same % on every ticket if spread pro-rata over opex
+2050,p90,Short haul,Economy,3312,2532,26.59,24.2,16.0,"1250 km, 30 kg fuel/pax, fare 110 USD"
+2050,p90,Short haul,Business,3312,2532,39.88,12.1,8.0,"1250 km, 45 kg fuel/pax, fare 330 USD"
+2050,p90,Long haul,Economy,3312,2532,161.3,35.8,,"7000 km, 182 kg fuel/pax, fare 450 USD"
+2050,p90,Long haul,Business,3312,2532,467.78,21.3,,"7000 km, 528 kg fuel/pax, fare 2200 USD"
