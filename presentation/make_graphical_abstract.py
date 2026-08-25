@@ -182,17 +182,17 @@ for _, r in df.iterrows():
             mec=SURF, mew=0.7, zorder=5)
 
 handles_map = [
-    Line2D([], [], marker="o", ls="", color=BLUE, ms=5.5, label="domestic plant, below import parity"),
-    Line2D([], [], marker="o", ls="", color=RED, ms=5.5, label="domestic plant, above import parity"),
-    Line2D([], [], marker="o", ls="", mfc=SURF, mec=INK, mew=1.0, ms=5.0, label="hub airport"),
-    Line2D([], [], marker="o", ls="", color=AQUA, ms=5.0, label="receiving port"),
-    Line2D([], [], marker="o", ls="", color=INK, ms=5.5, label="export terminal"),
-    Line2D([], [], marker="o", ls="", color=GRAY, ms=5.5, label="export production site"),
-    Line2D([], [], color=LANE, lw=1.2, label="routed sea lane"),
-    Line2D([], [], color=GRAY, lw=1.0, ls=(0, (2.2, 2.2)), label="inland leg"),
+    Line2D([], [], marker="o", ls="", color=BLUE, ms=5.5, label="Domestic plant, below import parity"),
+    Line2D([], [], marker="o", ls="", color=RED, ms=5.5, label="Domestic plant, above import parity"),
+    Line2D([], [], marker="o", ls="", mfc=SURF, mec=INK, mew=1.0, ms=5.0, label="Hub airport"),
+    Line2D([], [], marker="o", ls="", color=AQUA, ms=5.0, label="Receiving port"),
+    Line2D([], [], marker="o", ls="", color=INK, ms=5.5, label="Export terminal"),
+    Line2D([], [], marker="o", ls="", color=GRAY, ms=5.5, label="Export production site"),
+    Line2D([], [], color=LANE, lw=1.2, label="Routed sea lane"),
+    Line2D([], [], color=GRAY, lw=1.0, ls=(0, (2.2, 2.2)), label="Inland leg"),
 ]
 ax.legend(handles=handles_map, loc="upper right", fontsize=7.3, frameon=False,
-          bbox_to_anchor=(1.0, 1.0), borderaxespad=0.3, handletextpad=0.5,
+          bbox_to_anchor=(1.16, 1.0), borderaxespad=0.0, handletextpad=0.5,
           labelspacing=0.32)
 
 ax.text(-24.5, 59.8, "29 mandate-sized plants,\none per country at its best site",
@@ -243,11 +243,11 @@ ax2.text(12500, y[15] + 0.2,
          color=RED, fontweight="bold", ha="left")
 
 handles = [Line2D([], [], marker="o", ls="", color=BLUE, ms=6,
-                  label="domestic below import parity"),
+                  label="Domestic below import parity"),
            Line2D([], [], marker="o", ls="", color=RED, ms=6,
-                  label="domestic above import parity"),
+                  label="Domestic above import parity"),
            Rectangle((0, 0), 1, 1, fc="#c9c7c1", ec="none",
-                     label="imported-supply band")]
+                     label="Imported-supply band")]
 ax2.legend(handles=handles, loc="upper right", fontsize=8.5, frameon=False,
            bbox_to_anchor=(1.0, 1.0), borderaxespad=0.2)
 
